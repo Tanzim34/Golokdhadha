@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/sSignupScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/studentsignup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/ssignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="199dp"
+        android:fontFamily="@font/tata"
+        android:text="SIGN UP"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sInstitution" />
+
+    <EditText
+        android:id="@+id/sUsername"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="49dp"
+        android:gravity="center"
+        android:hint="Username"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/sInstitution"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/sAddress"
+        android:layout_width="157dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="296dp"
+        android:layout_marginEnd="49dp"
+        android:gravity="center"
+        android:hint="Address"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/sClass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/sPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="45dp"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/sConfirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/sInstitution"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="209dp"
+        android:gravity="center"
+        android:hint="Institution"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ssignup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sUsername"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/sClass"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="296dp"
+        android:layout_marginEnd="26dp"
+        android:gravity="center"
+        android:hint="Class"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sAddress"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/sConfirm"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="23dp"
+        android:gravity="center"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sPassword"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
