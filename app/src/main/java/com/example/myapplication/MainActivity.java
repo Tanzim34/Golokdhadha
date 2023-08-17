@@ -21,12 +21,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 setContentView(R.layout.signlogin);
+                Button signUp = findViewById(R.id.signup);
                 Button back = findViewById(R.id.back);
                 Button login = findViewById(R.id.login);
                 login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         gostdLogin();
+                    }
+                });
+                signUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, studentSignup.class);
+                        startActivity(intent);
                     }
                 });
                 back.setOnClickListener(new View.OnClickListener() {
@@ -60,5 +68,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, teacherlogin.class);
         startActivity(intent);
     }
+    public void gostdSignup(){
+
+    }
+
 
 }
