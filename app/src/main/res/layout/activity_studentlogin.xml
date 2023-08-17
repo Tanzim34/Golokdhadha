@@ -8,7 +8,7 @@
     tools:ignore="ExtraText">
 
     <ImageView
-        android:id="@+id/tloginScreen"
+        android:id="@+id/sloginScreen"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
