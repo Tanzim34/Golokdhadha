@@ -57,7 +57,7 @@ public class TeacherSignUp extends AppCompatActivity {
         {
             Toast.makeText(TeacherSignUp.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
         }
-        // check if the class is between 1 ans 12
+        // check if the class is between 1 - 12
         else{
             //  Toast.makeText(studentSignup.this, "asif", Toast.LENGTH_SHORT).show();
             StudentSignUpFire(user,pass,Institution, Class, Address);
