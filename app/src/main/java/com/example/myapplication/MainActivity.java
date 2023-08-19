@@ -57,7 +57,15 @@ public class MainActivity extends AppCompatActivity {
                         goteachlogin();
                     }
                 });
+                Button signUp = findViewById(R.id.signup);
+                signUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        goTecSignup();
+                    }
+                });
             }
+
         });
     }
     public void gostdLogin(){
@@ -68,8 +76,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, teacherlogin.class);
         startActivity(intent);
     }
-    public void gostdSignup(){
-
+    public void goTecSignup(){
+        Intent intent = new Intent(this, TeacherSignUp.class);
+        startActivity(intent);
     }
 
 
