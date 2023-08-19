@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class studentSignup extends AppCompatActivity {
 
     EditText sUsername, sAddress, sInstitution, sClass, sPassword, sCpassword;
-    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +59,14 @@ public class studentSignup extends AppCompatActivity {
         }
         // check if the class is between 1 ans 12
         else{
+          //  Toast.makeText(studentSignup.this, "asif", Toast.LENGTH_SHORT).show();
             StudentSignUpFire(user,pass,Institution, Class, Address);
         }
     }
 
     public void StudentSignUpFire(String username, String password, String institution, String Class, String address){
         FirebaseAuth auth = FirebaseAuth.getInstance();
+
        auth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(studentSignup.this, new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,6 +80,15 @@ public class studentSignup extends AppCompatActivity {
                    startActivity(intent);
                    finish();
                }
+               task.addOnFailureListener(new OnFailureListener() {
+                   @Override
+                   public void onFailure(@NonNull Exception e) {
+                       Toast.makeText(studentSignup.this, "Signup failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                   }
+               });
+
+               //else                Toast.makeText(studentSignup.this, "Dibbyo", Toast.LENGTH_SHORT).show();
+
            }
        });
     }

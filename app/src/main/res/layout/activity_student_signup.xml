@@ -44,7 +44,7 @@
         android:layout_marginTop="228dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
-        android:hint="Username"
+        android:hint="Email"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/sInstitution"
@@ -54,7 +54,7 @@
 
     <EditText
         android:id="@+id/sAddress"
-        android:layout_width="157dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="296dp"
@@ -86,7 +86,7 @@
         android:id="@+id/sInstitution"
         android:layout_width="152dp"
         android:layout_height="47dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
         android:gravity="center"
@@ -100,7 +100,7 @@
 
     <EditText
         android:id="@+id/sClass"
-        android:layout_width="155dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
