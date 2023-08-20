@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".afterlogin">
 
+    <Button
+        android:layout_width="116dp"
+        android:layout_height="71dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="299dp"
+        android:text="Sign Out"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:id="@+id/signOut"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
