@@ -1,16 +1,26 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class studentlogin extends AppCompatActivity {
+
     EditText userName , passWord;
 
 
@@ -25,17 +35,45 @@ public class studentlogin extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sSignIn();
+                tSignIn();
             }
         });
     }
-    void sSignIn(){
+    void tSignIn() {
         String user = userName.getText().toString();
         String pass = passWord.getText().toString();
-        if(user.equals("admin") && pass.equals("admin")){
-            Toast.makeText(studentlogin.this,"Successfull", Toast.LENGTH_SHORT).show();
+
+        if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
+            Toast.makeText(studentlogin.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
+        } else {
+            teacherLogFire(user, pass);
         }
-        else Toast.makeText(studentlogin.this,"Invalid", Toast.LENGTH_SHORT).show();
     }
+
+    public void teacherLogFire(String userName,String passWord){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(userName,passWord).addOnCompleteListener(studentlogin.this, new OnCompleteListener<AuthResult>(){
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(studentlogin.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(studentlogin.this, afterlogin.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
+                            |Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+
+
+                }
+                task.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(studentlogin.this, "Signup failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
+
 
 }
