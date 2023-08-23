@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sSignUp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".studentSignup"
     tools:ignore="ExtraText">
 
     <ImageView
@@ -19,8 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-
 
     <Button
         android:id="@+id/ssignup"
@@ -38,24 +37,12 @@
         app:layout_constraintVertical_bias="0.991" />
 
     <EditText
-        android:id="@+id/sName"
-        android:layout_width="148dp"
-        android:layout_height="49dp"
-        android:gravity="center"
-        android:hint="Name"
-        app:layout_constraintBottom_toTopOf="@+id/sUsername"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp" />
-
-    <EditText
         android:id="@+id/sUsername"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_width="153dp"
+        android:layout_height="53dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="216dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Email"
@@ -71,7 +58,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="296dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Address"
@@ -86,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="45dp"
         android:gravity="center"
         android:hint="Password"
@@ -98,8 +85,8 @@
 
     <EditText
         android:id="@+id/sInstitution"
-        android:layout_width="152dp"
-        android:layout_height="47dp"
+        android:layout_width="155dp"
+        android:layout_height="52dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
@@ -117,7 +104,7 @@
         android:id="@+id/sClass"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
         android:gravity="center"
         android:hint="Class"
@@ -131,7 +118,7 @@
         android:id="@+id/sConfirm"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="23dp"
         android:gravity="center"
         android:hint="Confirm Password"
@@ -141,5 +128,17 @@
         app:layout_constraintStart_toEndOf="@+id/sPassword"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/sName"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sSignupScreen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ public class TeacherSignUp extends AppCompatActivity {
         tUsername = findViewById(R.id.tUsername);
         tPassword = findViewById(R.id.tPassword);
         tInstitution = findViewById(R.id.tInstitution);
-        tSemester= findViewById(R.id.tSemester);
+        tSemester= findViewById(R.id.tYear);
         tAddress = findViewById(R.id.tAddress);
         // sPassword = findViewById(R.id.sPassword);
         tCpassword = findViewById(R.id.tConfirm);
