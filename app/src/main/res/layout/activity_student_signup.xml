@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".studentSignup"
     tools:ignore="ExtraText">
 
     <ImageView
@@ -12,18 +12,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/studentsignup"
+        android:src="@drawable/teachersignup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/ssignup"
+        android:id="@+id/sSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="199dp"
@@ -45,9 +43,9 @@
         android:hint="Name"
         app:layout_constraintBottom_toTopOf="@+id/sUsername"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944"
+        app:layout_constraintVertical_bias="0.889"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp" />
+        tools:layout_editor_absoluteX="56dp" />
 
     <EditText
         android:id="@+id/sUsername"
@@ -55,7 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="212dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Email"
@@ -71,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="296dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Address"
@@ -86,7 +84,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="45dp"
         android:gravity="center"
         android:hint="Password"
@@ -98,29 +96,29 @@
 
     <EditText
         android:id="@+id/sInstitution"
-        android:layout_width="152dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
         android:gravity="center"
         android:hint="Institution"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/ssignup"
+        app:layout_constraintBottom_toTopOf="@+id/sSignup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sUsername"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.395"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/sClass"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
         android:gravity="center"
-        android:hint="Class"
+        android:hint="Semester"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sAddress"
@@ -131,7 +129,7 @@
         android:id="@+id/sConfirm"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="23dp"
         android:gravity="center"
         android:hint="Confirm Password"

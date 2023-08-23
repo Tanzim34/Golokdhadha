@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +25,24 @@ public class afterlogin extends AppCompatActivity {
 
     private TextView userName;
     private FirebaseFirestore db;
-
+    private Button signOut;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afterlogin);
         String userUid = getIntent().getStringExtra("user_uid");
+        signOut = findViewById(R.id.xxx);
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                Intent intent = new Intent(afterlogin.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         //Toast.makeText(afterlogin.this, userUid, Toast.LENGTH_SHORT).show();
         if (userUid != null) {
             FirebaseFirestore db = FirebaseFirestore.getInstance();
