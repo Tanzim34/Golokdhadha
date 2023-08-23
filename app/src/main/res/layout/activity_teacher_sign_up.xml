@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".TeacherSignUp"
     tools:ignore="ExtraText">
 
     <ImageView
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/studentsignup"
+        android:src="@drawable/teachersignup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="212dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Email"
@@ -73,7 +73,7 @@
         android:gravity="center"
         android:hint="Address"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/tSemester"
+        app:layout_constraintEnd_toStartOf="@+id/tYear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -96,7 +96,7 @@
     <EditText
         android:id="@+id/tInstitution"
         android:layout_width="152dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
@@ -107,16 +107,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tUsername"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tSemester"
+        android:id="@+id/tYear"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
         android:gravity="center"
-        android:hint="Semester"
+        android:hint="Year"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tAddress"

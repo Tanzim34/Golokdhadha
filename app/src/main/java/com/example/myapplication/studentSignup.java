@@ -1,29 +1,16 @@
 package com.example.myapplication;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.BadParcelableException;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -115,35 +101,34 @@ public class studentSignup extends AppCompatActivity {
     public void StudentSignUpFire(String name, String username, String password, String institution, String Class, String address){
         FirebaseAuth auth = FirebaseAuth.getInstance();
        // studentInfo st = new studentInfo(name, institution,address, Class);
+        Map<String, Object> user = new HashMap<>();
+        user.put("Name", name);
+        user.put("Institution", institution);
+        user.put("Address", address);
+        user.put("Class", Class);
+        db.collection("users")
+                        .add(user)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                           // Toast.makeText(studentSignup.this,"information saved",Toast.LENGTH_SHORT).show();
 
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(studentSignup.this,"information saved",Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(studentSignup.this,"Failed",Toast.LENGTH_SHORT).show();
+
+                    }
+                });
        auth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(studentSignup.this, new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful()){
                    Toast.makeText(studentSignup.this, "successfully", Toast.LENGTH_SHORT).show();
                    FirebaseUser user = auth.getCurrentUser();
-
                    user.sendEmailVerification();
-                   Map<String, Object> userProfile = new HashMap<>();
-                   String UID = user.getUid();
-                   userProfile.put("Name", name);
-                   userProfile.put("Institution", institution);
-                   userProfile.put("Address", address);
-                   userProfile.put("Class", Class);
-                   db.collection("users").document(UID)
-                           .set(userProfile)
-                           .addOnSuccessListener(new OnSuccessListener<Void>() {
-                               @Override
-                               public void onSuccess(Void aVoid) {
-                                   Log.d(TAG, "DocumentSnapshot successfully written!");
-                               }
-                           }).addOnFailureListener(new OnFailureListener() {
-                               @Override
-                               public void onFailure(@NonNull Exception e) {
-                                   Toast.makeText(studentSignup.this,"Failed",Toast.LENGTH_SHORT).show();
-
-                               }
-                           });
                    Intent intent = new Intent(studentSignup.this, studentlogin.class);
                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
                    |Intent.FLAG_ACTIVITY_NEW_TASK);
