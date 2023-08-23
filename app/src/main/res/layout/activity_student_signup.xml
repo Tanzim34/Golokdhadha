@@ -18,7 +18,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
+
 
     <Button
         android:id="@+id/ssignup"
@@ -36,12 +38,24 @@
         app:layout_constraintVertical_bias="0.991" />
 
     <EditText
+        android:id="@+id/sName"
+        android:layout_width="148dp"
+        android:layout_height="49dp"
+        android:gravity="center"
+        android:hint="Name"
+        app:layout_constraintBottom_toTopOf="@+id/sUsername"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <EditText
         android:id="@+id/sUsername"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="284dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Email"
@@ -57,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="344dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Address"
@@ -72,7 +86,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="408dp"
         android:layout_marginEnd="45dp"
         android:gravity="center"
         android:hint="Password"
@@ -96,13 +110,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sUsername"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/sClass"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="344dp"
         android:layout_marginEnd="26dp"
         android:gravity="center"
         android:hint="Class"
@@ -116,7 +131,7 @@
         android:id="@+id/sConfirm"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="408dp"
         android:layout_marginEnd="23dp"
         android:gravity="center"
         android:hint="Confirm Password"
