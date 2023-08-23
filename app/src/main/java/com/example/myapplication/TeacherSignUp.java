@@ -4,13 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class TeacherSignUp extends AppCompatActivity {
 
-    EditText tUsername, tAddress, tInstitution, tSemester, tPassword, tCpassword;
+    EditText tUsername, tAddress, tInstitution, tYear, tPassword, tCpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +30,7 @@ public class TeacherSignUp extends AppCompatActivity {
         tUsername = findViewById(R.id.tUsername);
         tPassword = findViewById(R.id.tPassword);
         tInstitution = findViewById(R.id.tInstitution);
-        tSemester= findViewById(R.id.tSemester);
+        tYear= findViewById(R.id.tYear);
         tAddress = findViewById(R.id.tAddress);
         // sPassword = findViewById(R.id.sPassword);
         tCpassword = findViewById(R.id.tConfirm);
@@ -48,7 +46,7 @@ public class TeacherSignUp extends AppCompatActivity {
         String user = tUsername.getText().toString();
         String pass = tPassword.getText().toString();
         String Institution = tInstitution.getText().toString();
-        String Class = tSemester.getText().toString();
+        String Class = tYear.getText().toString();
         String Address = tAddress.getText().toString();
         // String password = sPassword.getText().toString();
         String confirm = tCpassword.getText().toString();

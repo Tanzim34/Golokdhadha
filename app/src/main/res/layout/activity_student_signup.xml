@@ -15,10 +15,10 @@
         android:src="@drawable/studentsignup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/ssignup"
@@ -38,10 +38,10 @@
     <EditText
         android:id="@+id/sUsername"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-        android:layout_width="0dp"
+        android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="49dp"
         android:gravity="center"
         android:hint="Email"
@@ -54,7 +54,7 @@
 
     <EditText
         android:id="@+id/sAddress"
-        android:layout_width="0dp"
+        android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="296dp"
@@ -69,7 +69,7 @@
 
     <EditText
         android:id="@+id/sPassword"
-        android:layout_width="0dp"
+        android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
         android:layout_marginTop="368dp"
@@ -84,8 +84,8 @@
 
     <EditText
         android:id="@+id/sInstitution"
-        android:layout_width="152dp"
-        android:layout_height="47dp"
+        android:layout_width="153dp"
+        android:layout_height="48dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
@@ -96,11 +96,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sUsername"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/sClass"
-        android:layout_width="0dp"
+        android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
@@ -114,7 +115,7 @@
 
     <EditText
         android:id="@+id/sConfirm"
-        android:layout_width="0dp"
+        android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginTop="368dp"
         android:layout_marginEnd="23dp"
