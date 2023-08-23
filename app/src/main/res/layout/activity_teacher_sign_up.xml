@@ -34,6 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tSignupScreen"
         app:layout_constraintVertical_bias="0.991" />
+    <EditText
+        android:id="@+id/tName"
+        android:layout_width="148dp"
+        android:layout_height="49dp"
+        android:gravity="center"
+        android:hint="Name"
+        app:layout_constraintBottom_toTopOf="@+id/tUsername"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp" />
 
     <EditText
         android:id="@+id/tUsername"

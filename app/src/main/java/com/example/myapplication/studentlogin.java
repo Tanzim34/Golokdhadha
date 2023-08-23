@@ -14,10 +14,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class studentlogin extends AppCompatActivity {
 
@@ -50,30 +57,34 @@ public class studentlogin extends AppCompatActivity {
         }
     }
 
-    public void teacherLogFire(String userName,String passWord){
+
+    public void teacherLogFire(String userName, String passWord) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword(userName,passWord).addOnCompleteListener(studentlogin.this, new OnCompleteListener<AuthResult>(){
+        auth.signInWithEmailAndPassword(userName, passWord).addOnCompleteListener(studentlogin.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(studentlogin.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(studentlogin.this, afterlogin.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
-                            |Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
+                if (task.isSuccessful()) {
+                    FirebaseUser currentUser = auth.getCurrentUser();
+                    if (currentUser != null) {
+                        String uid = currentUser.getUid();
+                        // Assuming display name is set during registration
 
+                        // Create user profile document if not already created
 
-                }
-                task.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(studentlogin.this, "Signup failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Proceed to the next activity
+                        Intent intent = new Intent(studentlogin.this, afterlogin.class);
+                        intent.putExtra("user_uid", uid);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
                     }
-                });
+                } else {
+                    Toast.makeText(studentlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
 
 
 }

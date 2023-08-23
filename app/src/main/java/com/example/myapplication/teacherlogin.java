@@ -50,27 +50,29 @@ public class teacherlogin extends AppCompatActivity {
         }
     }
 
-    public void teacherLogFire(String userName,String passWord){
+    public void teacherLogFire(String userName, String passWord) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword(userName,passWord).addOnCompleteListener(teacherlogin.this, new OnCompleteListener<AuthResult>(){
+        auth.signInWithEmailAndPassword(userName, passWord).addOnCompleteListener(teacherlogin.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(teacherlogin.this, "successfull", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(teacherlogin.this, afterlogin.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
-                            |Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
+                if (task.isSuccessful()) {
+                    FirebaseUser currentUser = auth.getCurrentUser();
+                    if (currentUser != null) {
+                        String uid = currentUser.getUid();
+                        // Assuming display name is set during registration
 
+                        // Create user profile document if not already created
 
-                }
-                task.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(teacherlogin.this, "Signup failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Proceed to the next activity
+                        Intent intent = new Intent(teacherlogin.this, afterlogin.class);
+                        intent.putExtra("user_uid", uid);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
                     }
-                });
+                } else {
+                    Toast.makeText(teacherlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
