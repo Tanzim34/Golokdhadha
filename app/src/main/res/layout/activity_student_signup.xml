@@ -41,11 +41,12 @@
         android:layout_height="49dp"
         android:gravity="center"
         android:hint="Name"
+        android:layout_marginStart="31dp"
         app:layout_constraintBottom_toTopOf="@+id/sUsername"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.889"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/sUsername"
