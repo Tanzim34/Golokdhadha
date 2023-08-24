@@ -1,12 +1,15 @@
 package com.example.myapplication;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -128,10 +131,31 @@ public class studentSignup extends AppCompatActivity {
                if(task.isSuccessful()){
                    Toast.makeText(studentSignup.this, "successfully", Toast.LENGTH_SHORT).show();
                    FirebaseUser user = auth.getCurrentUser();
+
                    user.sendEmailVerification();
+                   Map<String, Object> userProfile = new HashMap<>();
+                   String UID = user.getUid();
+                   userProfile.put("Name", name);
+                   userProfile.put("Institution", institution);
+                   userProfile.put("Address", address);
+                   userProfile.put("Class", Class);
+                   db.collection("users").document(UID)
+                           .set(userProfile)
+                           .addOnSuccessListener(new OnSuccessListener<Void>() {
+                               @Override
+                               public void onSuccess(Void aVoid) {
+                                   Log.d(TAG, "DocumentSnapshot successfully written!");
+                               }
+                           }).addOnFailureListener(new OnFailureListener() {
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+                                   Toast.makeText(studentSignup.this,"Failed",Toast.LENGTH_SHORT).show();
+
+                               }
+                           });
                    Intent intent = new Intent(studentSignup.this, studentlogin.class);
                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
-                   |Intent.FLAG_ACTIVITY_NEW_TASK);
+                           |Intent.FLAG_ACTIVITY_NEW_TASK);
                    startActivity(intent);
                    finish();
                }
