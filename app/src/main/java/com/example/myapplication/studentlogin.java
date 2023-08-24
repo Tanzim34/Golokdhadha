@@ -72,7 +72,7 @@ public class studentlogin extends AppCompatActivity {
                         // Create user profile document if not already created
 
                         // Proceed to the next activity
-                        Intent intent = new Intent(studentlogin.this, afterlogin.class);
+                        Intent intent = new Intent(studentlogin.this, appstart.class);
                         intent.putExtra("user_uid", uid);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

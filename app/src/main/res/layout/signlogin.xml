@@ -23,33 +23,38 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
+        android:layout_width="123dp"
+        android:layout_height="56dp"
         android:layout_marginTop="232dp"
         android:fontFamily="@font/tata"
         android:text="Login"
+        android:textColorHighlight="@color/design_default_color_background"
+        android:textColorLink="@color/design_default_color_surface"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signup"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="304dp"
+        android:layout_width="123dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="308dp"
         android:fontFamily="@font/tata"
         android:text="SIGN UP"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logsignupScreen" />
 
     <Button
         android:id="@+id/back"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="376dp"
+        android:layout_width="121dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="384dp"
         android:fontFamily="@font/tata"
         android:text="BACK"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logsignupScreen" />
