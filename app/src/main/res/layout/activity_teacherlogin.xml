@@ -19,6 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+
     <EditText
         android:id="@+id/tUsername"
         android:layout_width="242dp"
@@ -28,10 +30,12 @@
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:hint="Enter Username"
+        android:textColor="#EDFFFFFF"
+        android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tloginScreen"
         app:layout_constraintVertical_bias="0.291" />
@@ -46,14 +50,16 @@
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textColor="#EDFFFFFF"
+        android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tloginScreen"
-        app:layout_constraintVertical_bias="0.457"
-        android:inputType="textPassword"/>
-
+        app:layout_constraintVertical_bias="0.435" />
 
     <Button
         android:id="@+id/tlogin"

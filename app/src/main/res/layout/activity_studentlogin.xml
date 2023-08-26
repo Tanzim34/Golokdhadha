@@ -26,37 +26,37 @@
         android:id="@+id/sUsername"
         android:layout_width="242dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="472dp"
         android:gravity="center"
         android:hint="Enter Username"
+        android:textColor="#EDFFFFFF"
+        android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/sPassword"
         android:layout_width="242dp"
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="384dp"
         android:gravity="center"
         android:hint="Enter Password"
         android:inputType="textPassword"
+        android:textColor="#EDFFFFFF"
+        android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
-        app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/slogin"
