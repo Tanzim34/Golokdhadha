@@ -64,7 +64,7 @@ public class teacherlogin extends AppCompatActivity {
                         // Create user profile document if not already created
 
                         // Proceed to the next activity
-                        Intent intent = new Intent(teacherlogin.this, afterlogin.class);
+                        Intent intent = new Intent(teacherlogin.this, appStartTeacher.class);
                         intent.putExtra("user_uid", uid);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
