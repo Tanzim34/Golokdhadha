@@ -26,8 +26,24 @@ public class appstart extends AppCompatActivity {
         String Username = getIntent().getStringExtra("user_uid");
         TextView username = findViewById(R.id.Textname);
         username.setText(Username);
+        profile = findViewById(R.id.Profile);
+        teacherList = findViewById(R.id.MyTeachers);
         logOut = findViewById(R.id.LogOut);
 
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appstart.this, studentProfile.class);
+                startActivity(intent);
+            }
+        });
+        teacherList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appstart.this, studentTeacher.class);
+                startActivity(intent);
+            }
+        });
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

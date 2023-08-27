@@ -26,6 +26,22 @@ public class appStartTeacher extends AppCompatActivity {
         Username.setText(username);
         logout = findViewById(R.id.LogOut);
 
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appStartTeacher.this, teacherProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        studentlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appStartTeacher.this, teacherStudent.class);
+                startActivity(intent);
+            }
+        });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
