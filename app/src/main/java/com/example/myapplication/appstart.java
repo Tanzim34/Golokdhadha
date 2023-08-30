@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class appstart extends AppCompatActivity {
@@ -23,9 +29,27 @@ public class appstart extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appstart);
-        String Username = getIntent().getStringExtra("user_uid");
         TextView username = findViewById(R.id.Textname);
-        username.setText(Username);
+        String userUid = getIntent().getStringExtra("user_uid");
+        if(userUid != null){
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            DocumentReference userRef = db.collection("users").document(userUid);
+            userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    String name = documentSnapshot.getString("Name");
+                    username.setText(name);
+                   // Toast.makeText(appstart.this, name, Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(appstart.this, "failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
         profile = findViewById(R.id.Profile);
         teacherList = findViewById(R.id.MyTeachers);
         logOut = findViewById(R.id.LogOut);
@@ -34,6 +58,7 @@ public class appstart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(appstart.this, studentProfile.class);
+                intent.putExtra("user_id",userUid);
                 startActivity(intent);
             }
         });

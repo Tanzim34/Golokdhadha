@@ -102,29 +102,7 @@ public class studentSignup extends AppCompatActivity {
     }
 
     public void StudentSignUpFire(String name, String username, String password, String institution, String Class, String address){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-       // studentInfo st = new studentInfo(name, institution,address, Class);
-        Map<String, Object> user = new HashMap<>();
-        user.put("Name", name);
-        user.put("Institution", institution);
-        user.put("Address", address);
-        user.put("Class", Class);
-        db.collection("users")
-                        .add(user)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                                           // Toast.makeText(studentSignup.this,"information saved",Toast.LENGTH_SHORT).show();
-
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(studentSignup.this,"information saved",Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(studentSignup.this,"Failed",Toast.LENGTH_SHORT).show();
-
-                    }
-                });
+       FirebaseAuth auth = FirebaseAuth.getInstance();
        auth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(studentSignup.this, new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
