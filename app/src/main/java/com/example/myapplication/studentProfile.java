@@ -138,7 +138,7 @@ public class studentProfile extends AppCompatActivity {
                         });
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Failed to upload image"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         //Log.e("FirebaseStorage", "Image upload failed", e);
                     });
         }
