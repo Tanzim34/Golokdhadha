@@ -100,6 +100,7 @@ public class TeacherSignUp extends AppCompatActivity {
                     userProfile.put("Institution", institution);
                     userProfile.put("Address", address);
                     userProfile.put("Class", Class);
+                    userProfile.put("type", "2");
                     db.collection("users").document(UID)
                             .set(userProfile)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {

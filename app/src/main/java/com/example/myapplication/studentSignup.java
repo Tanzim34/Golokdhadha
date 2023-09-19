@@ -30,12 +30,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 class studentInfo{
-    String name, institution, address, Class;
+    String name, institution, address, Class, type;
     studentInfo(String name, String institution, String address, String Class){
         this.name = name;
         this.institution = institution;
         this.address = address;
         this.Class = Class;
+        this.type = "1";
     }
 
 }
@@ -117,6 +118,7 @@ public class studentSignup extends AppCompatActivity {
                    userProfile.put("Institution", institution);
                    userProfile.put("Address", address);
                    userProfile.put("Class", Class);
+                   userProfile.put("type", "1");
                    db.collection("users").document(UID)
                            .set(userProfile)
                            .addOnSuccessListener(new OnSuccessListener<Void>() {

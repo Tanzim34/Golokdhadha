@@ -20,6 +20,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TeacherList"
+            android:exported="false" />
+        <activity
             android:name=".studentTeacher"
             android:exported="false" />
         <activity

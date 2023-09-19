@@ -14,10 +14,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class teacherlogin extends AppCompatActivity {
 
@@ -57,22 +61,38 @@ public class teacherlogin extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser currentUser = auth.getCurrentUser();
+
                     if (currentUser != null) {
                         String uid = currentUser.getUid();
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        DocumentReference userRef = db.collection("users").document(uid);
+                        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String s = documentSnapshot.getString("type");
+                                if (s.equals("1"))
+                                    Toast.makeText(teacherlogin.this, "Login failed ", Toast.LENGTH_SHORT).show();
+                                else {
+                                   // System.out.println("LALALALA");
+                                    Intent intent = new Intent(teacherlogin.this, appStartTeacher.class);
+                                    intent.putExtra("user_uid", uid);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
                         // Assuming display name is set during registration
 
                         // Create user profile document if not already created
 
                         // Proceed to the next activity
-                        Intent intent = new Intent(teacherlogin.this, appStartTeacher.class);
-                        intent.putExtra("user_uid", uid);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
+
+                    } else {
+                        Toast.makeText(teacherlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(teacherlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                else  Toast.makeText(teacherlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

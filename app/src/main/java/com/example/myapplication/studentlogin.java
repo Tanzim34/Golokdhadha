@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,32 +60,47 @@ public class studentlogin extends AppCompatActivity {
 
 
     public void teacherLogFire(String userName, String passWord) {
+        System.out.println("LALALALA");
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(userName, passWord).addOnCompleteListener(studentlogin.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser currentUser = auth.getCurrentUser();
+
                     if (currentUser != null) {
                         String uid = currentUser.getUid();
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        DocumentReference userRef = db.collection("users").document(uid);
+                        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String s = documentSnapshot.getString("type");
+                                if (s.equals("2"))
+                                    Toast.makeText(studentlogin.this,"Login Failed " ,Toast.LENGTH_SHORT).show();
+                                else {
+                                    System.out.println("LALALALA");
+                                    Intent intent = new Intent(studentlogin.this, appstart.class);
+                                    intent.putExtra("user_uid", uid);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
                         // Assuming display name is set during registration
 
                         // Create user profile document if not already created
 
                         // Proceed to the next activity
-                        Intent intent = new Intent(studentlogin.this, appstart.class);
-                        intent.putExtra("user_uid", uid);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
+
+                    } else {
+                        Toast.makeText(studentlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(studentlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                else  Toast.makeText(studentlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 
 }
