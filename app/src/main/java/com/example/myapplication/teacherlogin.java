@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +28,7 @@ public class teacherlogin extends AppCompatActivity {
 
    private EditText email , password;
    private Button loginButton;
-
+   private TextView forgotPassword;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,39 @@ public class teacherlogin extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        forgotPassword = findViewById(R.id.forgerPassword);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                forgotPassword();
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
               login();
             }
         });
+    }
+    private void forgotPassword(){
+        String getEmail = email.getText().toString().trim();
+        if (TextUtils.isEmpty(getEmail)) {
+            Toast.makeText(teacherlogin.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        FirebaseAuth.getInstance().sendPasswordResetEmail(getEmail)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(teacherlogin.this, "Password reset email sent. Check your inbox.", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(teacherlogin.this, "Failed to send password reset email: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
     void login() {
         String getEmail = email.getText().toString();
