@@ -32,7 +32,7 @@ public class ListAdapter extends ArrayAdapter<Listdata> {
         //TextView listTime = view.findViewById(R.id.listTime);
 
         // Fix set image part
-        listImage.setImageResource(Integer.parseInt(listData.image));
+        //listImage.setImageResource(Integer.parseInt(listData.image));
         listName.setText(listData.name);
        // listTime.setText(listData.time);
 

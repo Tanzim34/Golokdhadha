@@ -16,7 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class TeacherList extends AppCompatActivity {
+public class StudentList extends AppCompatActivity {
 
     ActivityTeacherListBinding binding;
     ListAdapter listAdapter;
@@ -33,8 +33,8 @@ public class TeacherList extends AppCompatActivity {
 
         if (Suserid != null) {
             db = FirebaseFirestore.getInstance();
-            DocumentReference studentRef = db.collection("Student").document(Suserid);
-            CollectionReference teacherCollectionRef = studentRef.collection("TeacherID");
+            DocumentReference studentRef = db.collection("Teacher").document(Suserid);
+            CollectionReference teacherCollectionRef = studentRef.collection("StudentID");
 
             fetchData(teacherCollectionRef);
         }
@@ -71,9 +71,9 @@ public class TeacherList extends AppCompatActivity {
 
     private void updateUI(ArrayList<Listdata> dataList) {
         // Update the UI with the fetched data
-        listAdapter = new ListAdapter(TeacherList.this, dataList);
+        listAdapter = new ListAdapter(StudentList.this, dataList);
         // Assuming you have a ListView or RecyclerView to display the data, set the adapter here.
         // Example for a ListView:
-         binding.listview.setAdapter(listAdapter);
+        binding.listview.setAdapter(listAdapter);
     }
 }
