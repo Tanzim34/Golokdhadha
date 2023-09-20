@@ -7,22 +7,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.myapplication.ListData;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class list_adapter extends ArrayAdapter<ListData> {
-    public list_adapter(@NonNull Context context, ArrayList<ListData> dataArrayList) {
+public class ListAdapter extends ArrayAdapter<Listdata> {
+    public ListAdapter(@NonNull Context context, ArrayList<Listdata> dataArrayList) {
         super(context, R.layout.list_item, dataArrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        ListData listData = getItem(position);
+        Listdata listData = getItem(position);
 
         if (view == null){
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
@@ -30,9 +29,10 @@ public class list_adapter extends ArrayAdapter<ListData> {
 
         ImageView listImage = view.findViewById(R.id.listImage);
         TextView listName = view.findViewById(R.id.listName);
-        TextView listTime = view.findViewById(R.id.listTime);
+        //TextView listTime = view.findViewById(R.id.listTime);
 
-        listImage.setImageResource(listData.image);
+        // Fix set image part
+        listImage.setImageResource(Integer.parseInt(listData.image));
         listName.setText(listData.name);
        // listTime.setText(listData.time);
 
