@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/tSignup"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="199dp"
@@ -36,24 +36,24 @@
         app:layout_constraintVertical_bias="0.991" />
 
     <EditText
-        android:id="@+id/tName"
-        android:layout_width="148dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="31dp"
+        android:id="@+id/name"
+        android:layout_width="147dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="36dp"
         android:gravity="center"
 
 
         android:hint="Name"
         android:textColor="#EDFFFFFF"
         android:textColorHint="#81FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/tUsername"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944"
+        app:layout_constraintVertical_bias="0.907"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tUsername"
+        android:id="@+id/email"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -66,13 +66,13 @@
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/tInstitution"
+        app:layout_constraintEnd_toStartOf="@+id/institution"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tAddress"
+        android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -83,13 +83,13 @@
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/tSemester"
+        app:layout_constraintEnd_toStartOf="@+id/semester"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tPassword"
+        android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
@@ -101,14 +101,14 @@
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/tConfirm"
+        app:layout_constraintEnd_toStartOf="@+id/confirmPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tInstitution"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:id="@+id/institution"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="209dp"
@@ -117,15 +117,16 @@
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/tSignup"
+        app:layout_constraintBottom_toTopOf="@+id/signUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tUsername"
+        app:layout_constraintHorizontal_bias="0.975"
+        app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395"
+        app:layout_constraintVertical_bias="0.711"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tSemester"
+        android:id="@+id/semester"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
@@ -136,12 +137,12 @@
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tAddress"
+        app:layout_constraintStart_toEndOf="@+id/address"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/tConfirm"
+        android:id="@+id/confirmPassword"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="368dp"
@@ -153,7 +154,7 @@
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tPassword"
+        app:layout_constraintStart_toEndOf="@+id/password"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 

@@ -29,17 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-class studentInfo{
-    String name, institution, address, Class, type;
-    studentInfo(String name, String institution, String address, String Class){
-        this.name = name;
-        this.institution = institution;
-        this.address = address;
-        this.Class = Class;
-        this.type = "1";
-    }
 
-}
 public class studentSignup extends AppCompatActivity {
 
     EditText sUsername, sAddress, sInstitution, sClass, sPassword, sCpassword, sName;
@@ -94,11 +84,14 @@ public class studentSignup extends AppCompatActivity {
                 TextUtils.isEmpty(confirm))
         {
             Toast.makeText(studentSignup.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
+        } else if (pass.equals(confirm)) {
+            StudentSignUpFire(name, user,pass,Institution, Class, Address);
         }
         // check if the class is between 1 ans 12
         else if(pass.equals(confirm)){
           //  Toast.makeText(studentSignup.this, "asif", Toast.LENGTH_SHORT).show();
-            StudentSignUpFire(name, user,pass,Institution, Class, Address);
+            Toast.makeText(studentSignup.this,"Password and confirm password is not matching", Toast.LENGTH_SHORT).show();
+
         }
         else{
             Toast.makeText(studentSignup.this, "Password and confirm password is not matching", Toast.LENGTH_LONG).show();

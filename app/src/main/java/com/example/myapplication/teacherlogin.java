@@ -25,38 +25,38 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class teacherlogin extends AppCompatActivity {
 
-    EditText userName , passWord;
-
+   private EditText email , password;
+   private Button loginButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacherlogin);
-        Button button = findViewById(R.id.tlogin);
-        userName = findViewById(R.id.tUsername);
-        passWord = findViewById(R.id.tPassword);
-        button.setOnClickListener(new View.OnClickListener() {
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              sSignIn();
+              login();
             }
         });
     }
-    void sSignIn() {
-        String user = userName.getText().toString();
-        String pass = passWord.getText().toString();
+    void login() {
+        String getEmail = email.getText().toString();
+        String getPassword = password.getText().toString();
 
-        if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
+        if (TextUtils.isEmpty(getEmail) || TextUtils.isEmpty(getPassword)) {
             Toast.makeText(teacherlogin.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
         } else {
-            teacherLogFire(user, pass);
+            teacherLogFire(getEmail, getPassword);
         }
     }
 
-    public void teacherLogFire(String userName, String passWord) {
+    public void teacherLogFire(String email, String password) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword(userName, passWord).addOnCompleteListener(teacherlogin.this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(teacherlogin.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {

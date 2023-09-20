@@ -173,4 +173,3 @@ public class studentProfile extends AppCompatActivity {
                 });
     }
 }
-

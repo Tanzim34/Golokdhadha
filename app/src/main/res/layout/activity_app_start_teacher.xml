@@ -10,7 +10,7 @@
     tools:context=".appStartTeacher">
 
     <TextView
-        android:id="@+id/Textname"
+        android:id="@+id/name"
         android:layout_width="139dp"
         android:layout_height="39dp"
         android:layout_marginStart="157dp"
@@ -20,6 +20,8 @@
         android:fontFamily="@font/tata"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:text="Name"
+        android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +31,7 @@
         app:layout_constraintVertical_bias="0.583" />
 
     <Button
-        android:id="@+id/Profile"
+        android:id="@+id/myProfile"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="121dp"
         android:layout_height="48dp"
@@ -44,11 +46,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Textname"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         app:layout_constraintVertical_bias="0.714" />
 
     <Button
-        android:id="@+id/MyStudents"
+        android:id="@+id/myStudents"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="121dp"
         android:layout_height="48dp"
@@ -65,7 +67,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/LogOut"
+        android:id="@+id/logOut"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="121dp"
         android:layout_height="48dp"
