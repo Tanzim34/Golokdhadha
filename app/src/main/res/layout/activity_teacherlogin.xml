@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/tUsername"
+        android:id="@+id/email"
         android:layout_width="242dp"
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.291" />
 
     <EditText
-        android:id="@+id/tPassword"
+        android:id="@+id/password"
         android:layout_width="242dp"
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.435" />
 
     <Button
-        android:id="@+id/tlogin"
+        android:id="@+id/loginButton"
         android:layout_width="107dp"
         android:layout_height="48dp"
         android:layout_marginTop="408dp"

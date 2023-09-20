@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".teacherProfile">
+    tools:context=".teacherEditProfile">
 
     <ScrollView
         android:id="@+id/scroll"
@@ -128,40 +128,42 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/textView1"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:textColor="@color/material_dynamic_primary100" />
+                        android:text="   Name         : "
+                        android:textColor="@color/material_dynamic_primary50"
+                        android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/textView2"
+                    <EditText
+                        android:id="@+id/name"
                         android:layout_width="133dp"
-                        android:layout_height="34dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:text="TextView"
-                        android:textColor="@color/white" />
+
+                        android:textColor="@color/material_dynamic_primary50" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="   Institution         : "
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="16sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/institution"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="18sp" />
@@ -169,22 +171,22 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView7"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="   Address        :"
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="18sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/address"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="18sp" />
@@ -198,77 +200,28 @@
                     <TextView
                         android:id="@+id/textView9"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="   Semester             :"
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/semester"
+                    <EditText
+                        android:id="@+id/Class"
                         android:layout_width="128dp"
-                        android:layout_height="33dp"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
                         android:textColor="@color/material_dynamic_primary50"
                         android:textSize="18sp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="128dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:text="  No. of Students :"
-                        android:textColor="@color/material_dynamic_primary50"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/tutors"
-                        android:layout_width="128dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/material_dynamic_neutral_variant10"
-                        android:textSize="18sp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="128dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:text="  Total Income :"
-                        android:textColor="@color/material_dynamic_primary50"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/income"
-                        android:text="$$$$"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:layout_width="128dp"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/material_dynamic_neutral_variant10"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
             </LinearLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/doneButton"
                 android:layout_width="186dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="16dp"
-                android:text="Edit Profile"
+                android:text="Done"
                 android:fontFamily="@font/tata"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"

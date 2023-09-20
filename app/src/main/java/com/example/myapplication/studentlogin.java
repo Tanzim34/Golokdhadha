@@ -49,10 +49,10 @@ public class studentlogin extends AppCompatActivity {
     void tSignIn() {
         String user = userName.getText().toString();
         String pass = passWord.getText().toString();
-
         if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
             Toast.makeText(studentlogin.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
-        } else {
+        }
+        else {
             teacherLogFire(user, pass);
         }
     }
@@ -67,16 +67,26 @@ public class studentlogin extends AppCompatActivity {
                     FirebaseUser currentUser = auth.getCurrentUser();
                     if (currentUser != null) {
                         String uid = currentUser.getUid();
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        DocumentReference userRef = db.collection("users").document(uid);
+                        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String type = documentSnapshot.getString("type");
+                                if(type.equals("2")) Toast.makeText(studentlogin.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                                else {
+                                    Intent intent = new Intent(studentlogin.this, appstart.class);
+                                    intent.putExtra("user_uid", uid);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
                         // Assuming display name is set during registration
 
                         // Create user profile document if not already created
 
                         // Proceed to the next activity
-                        Intent intent = new Intent(studentlogin.this, appstart.class);
-                        intent.putExtra("user_uid", uid);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
                     }
                 } else {
                     Toast.makeText(studentlogin.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
