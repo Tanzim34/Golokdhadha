@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".studentProfile">
+    tools:context=".editProfile">
 
     <ScrollView
         android:id="@+id/scroll"
