@@ -35,6 +35,7 @@ public class studentProfile extends AppCompatActivity {
     private ImageView profileImageView;
     private Button galleryButton;
     private TextView institution, address, Class, name;
+    private Button editProfile;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -49,7 +50,18 @@ public class studentProfile extends AppCompatActivity {
         address = findViewById(R.id.address);
         Class = findViewById(R.id.Class);
         name = findViewById(R.id.email);
+        editProfile = findViewById(R.id.button);
         String userUid = getIntent().getStringExtra("user_id");
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(studentProfile.this, editProfile.class);
+                intent.putExtra("userID", userUid);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         if (userUid != null) {
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             DocumentReference userRef = db.collection("users").document(userUid);
