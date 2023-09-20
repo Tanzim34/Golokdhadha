@@ -123,7 +123,7 @@ public class TeacherSignUp extends AppCompatActivity {
 
                                 }
                             });
-                    Intent intent = new Intent(TeacherSignUp.this, studentlogin.class);
+                    Intent intent = new Intent(TeacherSignUp.this, teacherlogin.class);
                     intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
                             |Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
