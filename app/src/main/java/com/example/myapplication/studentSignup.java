@@ -96,9 +96,13 @@ public class studentSignup extends AppCompatActivity {
             Toast.makeText(studentSignup.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
         }
         // check if the class is between 1 ans 12
-        else{
+        else if(pass.equals(confirm)){
           //  Toast.makeText(studentSignup.this, "asif", Toast.LENGTH_SHORT).show();
             StudentSignUpFire(name, user,pass,Institution, Class, Address);
+        }
+        else{
+            Toast.makeText(studentSignup.this, "Password and confirm password is not matching", Toast.LENGTH_LONG).show();
+
         }
     }
 
