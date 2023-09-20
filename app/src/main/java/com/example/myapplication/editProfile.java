@@ -88,7 +88,7 @@ public class editProfile extends AppCompatActivity {
                         public void onSuccess(Void unused) {
                             Toast.makeText(editProfile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
 
-                            // Navigate back to the user profile or any other desired activity
+                            // Navigate profile or any other desired activity
                             Intent intent = new Intent(editProfile.this, studentProfile.class);
                             intent.putExtra("user_id", userUid);
                             startActivity(intent);
