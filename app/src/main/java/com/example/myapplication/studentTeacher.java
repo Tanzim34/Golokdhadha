@@ -10,5 +10,7 @@ public class studentTeacher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_teacher);
+        String std_id = getIntent().getStringExtra("student_id");
+        String teach_id = getIntent().getStringExtra("teacher_id");
     }
 }

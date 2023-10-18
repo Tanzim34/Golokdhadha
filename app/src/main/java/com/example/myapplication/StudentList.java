@@ -34,7 +34,7 @@ public class StudentList extends AppCompatActivity {
         if (Suserid != null) {
             db = FirebaseFirestore.getInstance();
             DocumentReference studentRef = db.collection("Teacher").document(Suserid);
-            CollectionReference teacherCollectionRef = studentRef.collection("StudentID");
+            CollectionReference teacherCollectionRef = studentRef.collection("studentID");
 
             fetchData(teacherCollectionRef);
         }

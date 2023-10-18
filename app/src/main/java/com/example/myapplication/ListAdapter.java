@@ -27,7 +27,7 @@ public class ListAdapter extends ArrayAdapter<Listdata> {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
-        ImageView listImage = view.findViewById(R.id.listImage);
+        //ImageView listImage = view.findViewById(R.id.listImage);
         TextView listName = view.findViewById(R.id.listName);
         //TextView listTime = view.findViewById(R.id.listTime);
 
