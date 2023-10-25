@@ -46,7 +46,7 @@ public class stdtask extends AppCompatActivity implements OnDialogCloseListner{
     private Query query;
     private ListenerRegistration listenerRegistration;
 
-    public String student_id, teacher_id;
+    public static String student_id, teacher_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +78,9 @@ public class stdtask extends AppCompatActivity implements OnDialogCloseListner{
         recyclerView.setAdapter(adapter);
     }
     private void showData(){
-        DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+        DocumentReference studentRef = firestore.collection("Student").document(student_id); // Use doc() to get a document
         CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-        DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+        DocumentReference finalRef = teacherCollectionRef.document(teacher_id); // Use doc() to get a document within the subcollection
         query = finalRef.collection("task").orderBy("time" , Query.Direction.DESCENDING);
 
         listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {

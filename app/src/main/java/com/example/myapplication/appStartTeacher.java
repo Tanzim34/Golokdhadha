@@ -63,8 +63,10 @@ public class appStartTeacher extends AppCompatActivity {
         studentlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(appStartTeacher.this, teacherStudent.class);
+                Intent intent = new Intent(appStartTeacher.this, StudentList.class);
+                intent.putExtra("user_id", userUid);
                 startActivity(intent);
+                finish();
             }
         });
 
