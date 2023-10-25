@@ -37,6 +37,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, homeprofile.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }
@@ -47,6 +48,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, stdchat.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }
@@ -57,6 +59,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, stdtask.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }
@@ -67,6 +70,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, stdcalender.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }
@@ -77,6 +81,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, stdpayment.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }
@@ -87,6 +92,7 @@ ImageView home,chat,task,calender,payment, notify;
                 Intent intent = new Intent(studentTeacher.this, stdnotify.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
             }

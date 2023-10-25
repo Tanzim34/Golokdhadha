@@ -83,6 +83,9 @@
             android:name=".studentlogin"
             android:exported="false" />
         <activity
+            android:name=".StudentList"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

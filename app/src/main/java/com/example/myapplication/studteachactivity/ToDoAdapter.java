@@ -45,9 +45,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
 
     public void deleteTask(int position){
         ToDoModel toDoModel = todoList.get(position);
-        DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+        DocumentReference studentRef = firestore.collection("Student").document(stdtask.student_id); // Use doc() to get a document
         CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-        DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+        DocumentReference finalRef = teacherCollectionRef.document(stdtask.teacher_id); // Use doc() to get a document within the subcollection
         finalRef.collection("task").document(toDoModel.TaskId).delete();
         todoList.remove(position);
         notifyItemRemoved(position);
@@ -81,14 +81,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+                    DocumentReference studentRef = firestore.collection("Student").document(stdtask.student_id); // Use doc() to get a document
                     CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-                    DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+                    DocumentReference finalRef = teacherCollectionRef.document(stdtask.teacher_id); // Use doc() to get a document within the subcollection
                     finalRef.collection("task").document(toDoModel.TaskId).update("status" , 1);
                 }else{
-                    DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+                    DocumentReference studentRef = firestore.collection("Student").document(stdtask.student_id); // Use doc() to get a document
                     CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-                    DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+                    DocumentReference finalRef = teacherCollectionRef.document(stdtask.teacher_id); // Use doc() to get a document within the subcollection
                     finalRef.collection("task").document(toDoModel.TaskId).update("status" , 0);
                 }
             }

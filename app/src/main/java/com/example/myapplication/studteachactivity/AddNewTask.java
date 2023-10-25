@@ -142,9 +142,11 @@ public class AddNewTask  extends BottomSheetDialogFragment {
                 String task = mTaskEdit.getText().toString();
 
                 if (finalIsUpdate){
-                    DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+                    System.out.println(stdtask.student_id);
+                    System.out.println(stdtask.teacher_id);
+                    DocumentReference studentRef = firestore.collection("Student").document(stdtask.student_id); // Use doc() to get a document
                     CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-                    DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+                    DocumentReference finalRef = teacherCollectionRef.document(stdtask.teacher_id); // Use doc() to get a document within the subcollection
 
                     finalRef.collection("task").document(id).update("task" , task , "due" , dueDate);
                     Toast.makeText(context, "Task Updated", Toast.LENGTH_SHORT).show();
@@ -162,9 +164,9 @@ public class AddNewTask  extends BottomSheetDialogFragment {
                         taskMap.put("status", 0);
                         taskMap.put("time", FieldValue.serverTimestamp());
 
-                        DocumentReference studentRef = firestore.collection("Student").document("student_id"); // Use doc() to get a document
+                        DocumentReference studentRef = firestore.collection("Student").document(stdtask.student_id); // Use doc() to get a document
                         CollectionReference teacherCollectionRef = studentRef.collection("TeacherID"); // Access the subcollection
-                        DocumentReference finalRef = teacherCollectionRef.document("teacher_id"); // Use doc() to get a document within the subcollection
+                        DocumentReference finalRef = teacherCollectionRef.document(stdtask.teacher_id); // Use doc() to get a document within the subcollection
                         finalRef.collection("task").add(taskMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
