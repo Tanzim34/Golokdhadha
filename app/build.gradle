@@ -52,6 +52,8 @@ dependencies {
 }
 dependencies {
 
+
+    implementation 'com.google.firebase:firebase-database:20.3.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.google.firebase:firebase-auth-ktx:22.1.1'
     // Import the BoM for the Firebase platform

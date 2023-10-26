@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,9 @@ ImageView home,chat,task,calender,payment, notify;
         calender = findViewById(R.id.calenderbutton);
         payment = findViewById(R.id.paymentbutton);
         notify = findViewById(R.id.notifybutton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        TextView studentNm = findViewById(R.id.stuName);
+        TextView teacherNm = findViewById(R.id.teachname);
 
         String std_id = getIntent().getStringExtra("student_id");
         String teach_id = getIntent().getStringExtra("teacher_id");
@@ -45,7 +49,7 @@ ImageView home,chat,task,calender,payment, notify;
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(studentTeacher.this, stdchat.class);
+                Intent intent = new Intent(studentTeacher.this, chatwindo.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
                 intent.putExtra("type", "Student");

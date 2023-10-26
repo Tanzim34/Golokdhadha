@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,15 +22,19 @@ public class appstart extends AppCompatActivity {
 
 
     private FirebaseFirestore db;
-    private Button logOut, profile, teacherList;
+    private Button logOut, profile, teacherList, chat;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appstart);
         TextView username = findViewById(R.id.Textname);
+
+
+
         String userUid = getIntent().getStringExtra("user_uid");
         if(userUid != null){
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -79,6 +84,7 @@ public class appstart extends AppCompatActivity {
                 finish();
             }
         });
+
 
 
         }

@@ -25,7 +25,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/stuName"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_alignBottom="@+id/top_view"

@@ -23,6 +23,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".chatwindo"
+            android:exported="false" />
+        <activity
             android:name=".studteachactivity.stdnotify"
             android:exported="false" />
         <activity
