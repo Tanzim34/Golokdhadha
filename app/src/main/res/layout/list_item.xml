@@ -8,12 +8,14 @@
     android:layout_marginHorizontal="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp"
+    android:background="@color/teal_700"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/lavender">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="60dp"
@@ -33,7 +35,7 @@
             android:clickable="true"
             android:focusable="false"
             android:text="Name"
-            android:textColor="@color/lavender"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="25dp"
             android:layout_marginStart="30dp"

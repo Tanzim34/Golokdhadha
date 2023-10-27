@@ -6,7 +6,7 @@
 
     <ListView
         android:id="@+id/messageListView"
-
+        android:background="@color/purple_200"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:stackFromBottom="true"

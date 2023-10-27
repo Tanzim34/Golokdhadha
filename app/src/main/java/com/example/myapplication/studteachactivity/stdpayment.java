@@ -1,22 +1,37 @@
 package com.example.myapplication.studteachactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import com.example.myapplication.R;
+import com.example.myapplication.studentTeacher;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class stdpayment extends AppCompatActivity {
 
+    Button donebutton;
+    TextView paymentStatus;
+    String std_id,teach_id;
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stdpayment);
 
-        Button bkashPaymentButton = findViewById(R.id.bkashPaymentButton);
-        Button nagadPaymentButton = findViewById(R.id.nagadPaymentButton);
+        ImageButton bkashPaymentButton = findViewById(R.id.bkashPaymentButton);
+        ImageButton nagadPaymentButton = findViewById(R.id.nagadPaymentButton);
+        donebutton = findViewById(R.id.donebutton);
+        paymentStatus = findViewById(R.id.paymentStatus);
+        std_id = getIntent().getStringExtra("student_id");
+        teach_id = getIntent().getStringExtra("teacher_id");
 
         // Handle bKash Payment Button Click
         bkashPaymentButton.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +62,23 @@ public class stdpayment extends AppCompatActivity {
                 }
             }
         });
+
+        donebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                paymentStatus.setText("PAID");
+                db = FirebaseFirestore.getInstance();
+                // set notification
+
+                Intent intent  = new Intent(stdpayment.this, studentTeacher.class);
+                intent.putExtra("student_id",std_id);
+                intent.putExtra("teacher_id",teach_id);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private boolean isAppInstalled(String packageName) {

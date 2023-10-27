@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,16 +9,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.studteachactivity.stdcalender;
 import com.example.myapplication.studteachactivity.stdchat;
 import com.example.myapplication.studteachactivity.stdnotify;
 import com.example.myapplication.studteachactivity.stdpayment;
 import com.example.myapplication.studteachactivity.stdtask;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
+import com.squareup.picasso.Picasso;
 
 public class studentTeacher extends AppCompatActivity {
 
 ImageView home,chat,task,calender,payment, notify;
+FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +44,39 @@ ImageView home,chat,task,calender,payment, notify;
 
         String std_id = getIntent().getStringExtra("student_id");
         String teach_id = getIntent().getStringExtra("teacher_id");
+        db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("users").document(std_id);
+        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String Name = documentSnapshot.getString("Name");
+                String Institution = documentSnapshot.getString("Institution");
+                String Address = documentSnapshot.getString("Address");
+                String CClass = documentSnapshot.getString("Class");
+                studentNm.setText(Name);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(studentTeacher.this, "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        userRef = db.collection("users").document(teach_id);
+        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String Name = documentSnapshot.getString("Name");
+                String Institution = documentSnapshot.getString("Institution");
+                String Address = documentSnapshot.getString("Address");
+                String CClass = documentSnapshot.getString("Class");
+                teacherNm.setText(Name);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(studentTeacher.this, "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
