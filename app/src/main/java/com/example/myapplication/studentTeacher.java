@@ -83,7 +83,7 @@ FirebaseFirestore db;
             public void onClick(View view) {
                 Intent intent = new Intent(studentTeacher.this, homeprofile.class);
                 intent.putExtra("student_id",std_id);
-                intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("user_id", teach_id);
                 intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();
