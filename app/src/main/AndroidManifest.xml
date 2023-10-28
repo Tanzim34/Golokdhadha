@@ -23,6 +23,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".teachstudactivity.teachpayment"
+            android:exported="false" />
+        <activity
             android:name=".chatwindo"
             android:exported="false" />
         <activity
@@ -86,7 +89,7 @@
             android:name=".studentlogin"
             android:exported="false" />
         <activity
-            android:name="com.example.myapplication.StudentList"
+            android:name=".StudentList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -16,6 +16,7 @@ import com.example.myapplication.studteachactivity.stdchat;
 import com.example.myapplication.studteachactivity.stdnotify;
 import com.example.myapplication.studteachactivity.stdpayment;
 import com.example.myapplication.studteachactivity.stdtask;
+import com.example.myapplication.teachstudactivity.teachpayment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -124,7 +125,7 @@ public class teacherStudent extends AppCompatActivity {
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(teacherStudent.this, stdpayment.class);
+                Intent intent = new Intent(teacherStudent.this, teachpayment.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
                 intent.putExtra("type", "Teacher");

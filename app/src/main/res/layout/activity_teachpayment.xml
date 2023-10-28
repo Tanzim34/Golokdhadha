@@ -5,47 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".studteachactivity.stdpayment">
+    tools:context=".teachstudactivity.teachpayment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".studteachactivity.stdpayment"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-101dp">
+        tools:context=".teachstudactivity.teachpayment"
+        tools:layout_editor_absoluteX="-76dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <!-- Payment Title -->
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="182dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="300dp"
+            android:fontFamily="@font/tata"
+            android:gravity="center"
+            android:text="Set Payment Amount : "
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/PaymentStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/mobile"
             android:layout_width="172dp"
             android:layout_height="39dp"
+            android:layout_marginTop="103dp"
+            android:layout_marginBottom="524dp"
             android:gravity="center_vertical"
             android:text="01531766558"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintHorizontal_bias="0.405"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.161" />
+            app:layout_constraintTop_toBottomOf="@+id/paymentTitle" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="182dp"
             android:layout_height="39dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="103dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="524dp"
             android:fontFamily="@font/tata"
             android:gravity="center"
             android:text="Mobile No : "
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/mobile"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintEnd_toStartOf="@+id/mobile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.161" />
+            app:layout_constraintTop_toBottomOf="@+id/paymentTitle" />
 
         <TextView
             android:id="@+id/paymentStatus"
@@ -57,24 +78,28 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintHorizontal_bias="0.405"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.658" />
+            app:layout_constraintVertical_bias="0.469" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="182dp"
             android:layout_height="39dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="236dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="368dp"
             android:fontFamily="@font/tata"
             android:gravity="center"
             android:text="Payment Status    : "
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/paymentStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/paymentTitle"
@@ -83,7 +108,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/tata"
             android:gravity="center"
-            android:text="Select Payment Method"
+            android:text="Payment Info"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,34 +121,6 @@
 
         <!-- Payment Status -->
 
-        <ImageButton
-            android:id="@+id/bkashPaymentButton"
-            android:layout_width="396dp"
-            android:layout_height="67dp"
-            android:layout_marginTop="104dp"
-            android:backgroundTint="@color/material_dynamic_primary80"
-            android:contentDescription="logo"
-            android:src="@drawable/bkash"
-            android:text="Pay with bKash"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/paymentTitle" />
-
-        <ImageButton
-            android:id="@+id/nagadPaymentButton"
-            android:layout_width="396dp"
-            android:layout_height="67dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/material_dynamic_primary80"
-            android:contentDescription="logo1"
-            android:src="@drawable/nagad"
-            android:text="Pay with Nagad"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bkashPaymentButton" />
-
         <Button
             android:id="@+id/donebutton"
             android:layout_width="156dp"
@@ -131,7 +128,7 @@
             android:layout_marginStart="141dp"
             android:layout_marginTop="480dp"
             android:layout_marginEnd="147dp"
-            android:layout_marginBottom="170dp"
+            android:layout_marginBottom="50dp"
             android:contentDescription="donee"
             android:fontFamily="@font/tata"
             android:gravity="center"
@@ -142,35 +139,76 @@
             app:layout_constraintHorizontal_bias="0.424"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/paymentTitle"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.613" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="182dp"
             android:layout_height="39dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="300dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="432dp"
             android:fontFamily="@font/tata"
             android:gravity="center"
             android:text="Pay Amount    : "
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/amount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/amount"
             android:layout_width="172dp"
             android:layout_height="39dp"
-            android:layout_marginBottom="300dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginBottom="428dp"
             android:gravity="center_vertical"
             android:text="10000"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.462"
-            app:layout_constraintStart_toEndOf="@+id/textView4" />
+            app:layout_constraintHorizontal_bias="0.899"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/mobile"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/statusbutton"
+            android:layout_width="279dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="66dp"
+            android:layout_marginBottom="38dp"
+            android:text="Change Payment Status"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/donebutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PaymentStatus" />
+
+        <EditText
+            android:id="@+id/PaymentStatus"
+            android:layout_width="191dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="392dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="65dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            android:textColor="#99FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/donebutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
