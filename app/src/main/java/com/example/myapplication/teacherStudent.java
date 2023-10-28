@@ -80,8 +80,8 @@ public class teacherStudent extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(teacherStudent.this, homeprofile.class);
-                intent.putExtra("student_id",std_id);
+                Intent intent = new Intent(teacherStudent.this, studentHome.class);
+                intent.putExtra("user_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
                 intent.putExtra("type", "Teacher");
                 startActivity(intent);

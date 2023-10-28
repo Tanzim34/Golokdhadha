@@ -27,23 +27,23 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class homeprofile extends AppCompatActivity {
+public class studentHome extends AppCompatActivity {
 
 
-    private TextView institution, address, semester, name;
+    private TextView institution, address, Class, name;
 
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homeprofile);
+        setContentView(R.layout.activity_student_home);
 
 
         institution = findViewById(R.id.institution);
         address = findViewById(R.id.address);
-        semester = findViewById(R.id.semester);
-        name = findViewById(R.id.name);
+        Class = findViewById(R.id.Class);
+        name = findViewById(R.id.email);
 
         String userUid = getIntent().getStringExtra("user_id");
 
@@ -61,7 +61,8 @@ public class homeprofile extends AppCompatActivity {
                     name.setText(Name);
                     institution.setText(Institution);
                     address.setText(Address);
-                    semester.setText(CClass);
+                    Class.setText(CClass);
+
 
 
 
@@ -69,7 +70,7 @@ public class homeprofile extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(homeprofile.this, "failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(studentHome.this, "failed", Toast.LENGTH_SHORT).show();
                 }
             });
         }
