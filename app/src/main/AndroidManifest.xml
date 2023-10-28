@@ -86,7 +86,7 @@
             android:name=".studentlogin"
             android:exported="false" />
         <activity
-            android:name=".StudentList"
+            android:name="com.example.myapplication.StudentList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
