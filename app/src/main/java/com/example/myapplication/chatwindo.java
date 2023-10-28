@@ -50,8 +50,8 @@ public class chatwindo extends AppCompatActivity {
         send = findViewById(R.id.sendButton);
         messageListView = findViewById(R.id.messageListView);
 
-        senderUID = getIntent().getStringExtra("student_id");
-        receiverUID = getIntent().getStringExtra("teacher_id");
+        senderUID = getIntent().getStringExtra("senderID");
+        receiverUID = getIntent().getStringExtra("receiverID");
         firestore = FirebaseFirestore.getInstance();
         DocumentReference documentReference = firestore.collection("users").document(senderUID);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

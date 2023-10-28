@@ -93,8 +93,8 @@ FirebaseFirestore db;
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(studentTeacher.this, chatwindo.class);
-                intent.putExtra("student_id",std_id);
-                intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("senderID",std_id);
+                intent.putExtra("receiverID", teach_id);
                 intent.putExtra("type", "Student");
                 startActivity(intent);
                 finish();

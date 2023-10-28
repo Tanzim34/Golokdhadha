@@ -91,9 +91,9 @@ public class teacherStudent extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(teacherStudent.this, stdchat.class);
-                intent.putExtra("student_id",std_id);
-                intent.putExtra("teacher_id", teach_id);
+                Intent intent = new Intent(teacherStudent.this, chatwindo.class);
+                intent.putExtra("receiverID",std_id);
+                intent.putExtra("senderID", teach_id);
                 intent.putExtra("type", "Teacher");
                 startActivity(intent);
                 finish();
