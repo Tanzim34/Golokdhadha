@@ -5,5 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".studteachactivity.stdnotify">
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/row_notification"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
