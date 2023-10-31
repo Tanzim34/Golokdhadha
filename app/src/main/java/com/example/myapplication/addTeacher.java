@@ -43,7 +43,7 @@ public class addTeacher extends AppCompatActivity {
                     Listdata selectedData = dataList.get(position);
                     System.out.println(dataArrayList.size());
                     // Create an Intent to start a new activity (e.g., studentTeacher
-                    Intent intent = new Intent(addTeacher.this, homeprofile.class);
+                    Intent intent = new Intent(addTeacher.this, sendRequest.class);
                     intent.putExtra("user_id", selectedData.getId());
                     startActivity(intent);
                 });
