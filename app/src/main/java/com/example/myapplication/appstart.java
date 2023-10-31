@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.teachstudactivity.addTeacher;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,7 @@ public class appstart extends AppCompatActivity {
 
 
     private FirebaseFirestore db;
-    private Button logOut, profile, teacherList, chat;
+    private Button logOut, profile, teacherList, chat, addTeahcer;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     @SuppressLint("MissingInflatedId")
@@ -32,7 +33,17 @@ public class appstart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appstart);
         TextView username = findViewById(R.id.Textname);
+        addTeahcer = findViewById(R.id.addTeacher);
 
+
+        addTeahcer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appstart.this, addTeacher.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         String userUid = getIntent().getStringExtra("user_uid");
