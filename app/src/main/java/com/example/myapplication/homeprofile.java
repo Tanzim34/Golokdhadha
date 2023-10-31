@@ -30,7 +30,7 @@ import com.squareup.picasso.Picasso;
 public class homeprofile extends AppCompatActivity {
 
 
-    private TextView institution, address, semester, name;
+    private TextView institution, address, semester, name, py;
 
 
     @SuppressLint("MissingInflatedId")
@@ -44,6 +44,7 @@ public class homeprofile extends AppCompatActivity {
         address = findViewById(R.id.address);
         semester = findViewById(R.id.semester);
         name = findViewById(R.id.name);
+        py = findViewById(R.id.payment);
 
         String userUid = getIntent().getStringExtra("user_id");
 
@@ -58,10 +59,15 @@ public class homeprofile extends AppCompatActivity {
                     String Institution = documentSnapshot.getString("Institution");
                     String Address = documentSnapshot.getString("Address");
                     String CClass = documentSnapshot.getString("Class");
+                    String payment = documentSnapshot.getString("payment");
+
+
+                    Toast.makeText(homeprofile.this,Name+CClass, Toast.LENGTH_SHORT).show();
                     name.setText(Name);
                     institution.setText(Institution);
                     address.setText(Address);
                     semester.setText(CClass);
+                    py.setText(payment);
 
 
 
