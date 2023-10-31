@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.studteachactivity.AddNewTask.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,10 +29,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class sendRequest extends AppCompatActivity {
 
 
     private TextView institution, address, semester, name, py;
+
+    private Button sendRq;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -46,7 +54,51 @@ public class sendRequest extends AppCompatActivity {
         name = findViewById(R.id.name);
         py = findViewById(R.id.payment);
 
+        sendRq = findViewById(R.id.sendRequest);
+
         String userUid = getIntent().getStringExtra("user_id");
+        String studentUid = getIntent().getStringExtra("student_id");
+        sendRq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userUid != null) {
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    DocumentReference userRef = db.collection("users").document(userUid);
+                    userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            Map<String, Object> request = new HashMap<>();
+                            request.put("studentID", studentUid);
+
+                            db.collection("Teacher").document(userUid).collection("requests")
+                                    .add(request)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                            // Add your success message here
+                                            Toast.makeText(sendRequest.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error adding document", e);
+                                            // Add your failure message here
+                                            Toast.makeText(sendRequest.this, "Failed to send request", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(sendRequest.this, "Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+            }
+        });
 
 
         if (userUid != null) {

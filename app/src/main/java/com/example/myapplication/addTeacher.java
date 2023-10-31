@@ -29,7 +29,7 @@ public class addTeacher extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-       
+       String studentID = getIntent().getStringExtra("student_id");
             db = FirebaseFirestore.getInstance();
             CollectionReference teacherCollectionRef = db.collection("Teacher");
 
@@ -45,6 +45,7 @@ public class addTeacher extends AppCompatActivity {
                     // Create an Intent to start a new activity (e.g., studentTeacher
                     Intent intent = new Intent(addTeacher.this, sendRequest.class);
                     intent.putExtra("user_id", selectedData.getId());
+                    intent.putExtra("student_id", studentID);
                     startActivity(intent);
                 });
             });

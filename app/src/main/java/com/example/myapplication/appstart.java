@@ -34,19 +34,21 @@ public class appstart extends AppCompatActivity {
         setContentView(R.layout.activity_appstart);
         TextView username = findViewById(R.id.Textname);
         addTeahcer = findViewById(R.id.addTeacher);
+        String userUid = getIntent().getStringExtra("user_uid");
 
 
         addTeahcer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(appstart.this, addTeacher.class);
+                intent.putExtra("student_id", userUid);
                 startActivity(intent);
                 finish();
             }
         });
 
 
-        String userUid = getIntent().getStringExtra("user_uid");
+       ;
         if(userUid != null){
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             DocumentReference userRef = db.collection("users").document(userUid);
