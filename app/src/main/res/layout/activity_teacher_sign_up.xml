@@ -20,6 +20,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <EditText
+        android:id="@+id/payment"
+        android:layout_width="147dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="236dp"
+        android:gravity="center"
+
+
+        android:hint="Payment"
+        android:textColor="#EDFFFFFF"
+        android:textColorHint="#81FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.844"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/signUp"
         android:layout_width="wrap_content"
@@ -132,7 +149,7 @@
         android:layout_marginTop="296dp"
         android:layout_marginEnd="26dp"
         android:gravity="center"
-        android:hint="Semester"
+        android:hint="Session"
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"

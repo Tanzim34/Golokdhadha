@@ -34,7 +34,7 @@ public class teacherProfile extends AppCompatActivity {
     private ImageButton addPhotoButton;
     private ImageView profileImageView;
     private Button galleryButton;
-    private TextView institution, address, semester, name;
+    private TextView institution, address, semester, name, pay;
     private Button editProfile;
 
     @SuppressLint("MissingInflatedId")
@@ -51,6 +51,7 @@ public class teacherProfile extends AppCompatActivity {
         semester = findViewById(R.id.semester);
         name = findViewById(R.id.email);
         editProfile = findViewById(R.id.button);
+        pay = findViewById(R.id.payment);
         String userUid = getIntent().getStringExtra("user_id");
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,10 +73,12 @@ public class teacherProfile extends AppCompatActivity {
                     String Institution = documentSnapshot.getString("Institution");
                     String Address = documentSnapshot.getString("Address");
                     String CClass = documentSnapshot.getString("Semester");
+                    String payment = documentSnapshot.getString("payment");
                     name.setText(Name);
                     institution.setText(Institution);
                     address.setText(Address);
                     semester.setText(CClass);
+                    pay.setText(payment);
                     String profileImageUrl = documentSnapshot.getString("profileImageUrl");
                     if (profileImageUrl != null) {
                         // Load profile image using a library like Picasso or Glide

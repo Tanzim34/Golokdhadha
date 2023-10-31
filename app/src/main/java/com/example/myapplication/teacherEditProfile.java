@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,13 +27,14 @@ public class teacherEditProfile extends AppCompatActivity {
     private ImageButton addPhotoButton;
     private ImageView profileImageView;
     private Button galleryButton;
-    private EditText institution, address, Class, userName;
+    private EditText institution, address, Class, userName, payment;
     private TextView name;
     private Button doneButton;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_teacher_edit_profile);
         addPhotoButton = findViewById(R.id.addphoto);
         profileImageView = findViewById(R.id.imageView5);
         galleryButton = findViewById(R.id.galleryButton);
@@ -42,6 +44,7 @@ public class teacherEditProfile extends AppCompatActivity {
         name = findViewById(R.id.email);
         userName = findViewById(R.id.name);
         doneButton = findViewById(R.id.doneButton);
+        payment = findViewById(R.id.payment);
         String userUid = getIntent().getStringExtra("user_id");
         if (userUid != null) {
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -53,11 +56,13 @@ public class teacherEditProfile extends AppCompatActivity {
                     String Institution = documentSnapshot.getString("Institution");
                     String Address = documentSnapshot.getString("Address");
                     String CClass = documentSnapshot.getString("Semester");
+                    String py = documentSnapshot.getString("payment");
                     name.setText(Name);
                     userName.setText(Name);
                     institution.setText(Institution);
                     address.setText(Address);
                     Class.setText(CClass);
+                    payment.setText(py);
 
 
                 }
@@ -75,6 +80,7 @@ public class teacherEditProfile extends AppCompatActivity {
                 String updateInstitution = institution.getText().toString();
                 String updateAddress = address.getText().toString();
                 String updateClass = Class.getText().toString();
+                String updatePy = payment.getText().toString();
                 if(userUid != null){
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     DocumentReference userRef =db.collection("users").document(userUid);
@@ -82,7 +88,8 @@ public class teacherEditProfile extends AppCompatActivity {
                             "Name", updateUserName,
                             "Institution", updateInstitution,
                             "Address", updateAddress,
-                            "Semester", updateClass
+                            "Semester", updateClass,
+                            "payment",updatePy
                     ).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {

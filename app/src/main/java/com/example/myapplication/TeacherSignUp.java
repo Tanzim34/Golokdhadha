@@ -27,13 +27,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Struct;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class TeacherSignUp extends AppCompatActivity {
 
-    private EditText name,email , institution, address, semester, password, confirmPassword;
+    private EditText name,email , institution, address, semester, password, confirmPassword, payment;
     FirebaseFirestore db;
     private Button signUpButton;
     @SuppressLint("MissingInflatedId")
@@ -49,6 +50,7 @@ public class TeacherSignUp extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirmPassword);
         email = findViewById(R.id.email);
         signUpButton = findViewById(R.id.signUp);
+        payment = findViewById(R.id.payment);
         db = FirebaseFirestore.getInstance();
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +71,9 @@ public class TeacherSignUp extends AppCompatActivity {
         String getInstitution = institution.getText().toString();
         String getSemester = semester.getText().toString();
         String getConfirmPassword = confirmPassword.getText().toString();
+        String pymnnt = payment.getText().toString();
+
+
 
         if(TextUtils.isEmpty(getName) ||
                 TextUtils.isEmpty(getEmail) ||
@@ -77,13 +82,14 @@ public class TeacherSignUp extends AppCompatActivity {
                 TextUtils.isEmpty(getSemester) ||
                 TextUtils.isEmpty(getAddress) ||
                 TextUtils.isEmpty(getPassword) ||
-                TextUtils.isEmpty((getConfirmPassword))
+                TextUtils.isEmpty((getConfirmPassword))||
+                TextUtils.isEmpty(pymnnt)
                 )
 
         {
             Toast.makeText(TeacherSignUp.this, "Please Fill Out All The Information", Toast.LENGTH_LONG).show();
         } else if (getPassword.equals(getConfirmPassword)) {
-            teacherSignUpFire(getName, getEmail,getAddress,getPassword, getInstitution, getSemester, getConfirmPassword);
+            teacherSignUpFire(getName, getEmail,getAddress,getPassword, getInstitution, getSemester, getConfirmPassword, pymnnt);
         }
         else {
             Toast.makeText(TeacherSignUp.this, "Password and confirm password is not matching", Toast.LENGTH_LONG).show();
@@ -91,7 +97,7 @@ public class TeacherSignUp extends AppCompatActivity {
         // check if the class is between 1 ans 12
     }
 
-    public void teacherSignUpFire(String name, String email, String address, String password, String institution, String semester, String confirmPassword){
+    public void teacherSignUpFire(String name, String email, String address, String password, String institution, String semester, String confirmPassword, String payment){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(TeacherSignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -107,6 +113,7 @@ public class TeacherSignUp extends AppCompatActivity {
                     userProfile.put("Institution", institution);
                     userProfile.put("Address", address);
                     userProfile.put("Semester", semester);
+                    userProfile.put("payment", payment);
                     userProfile.put("type", "2");
                     db.collection("users").document(UID)
                             .set(userProfile)
