@@ -4,7 +4,6 @@ import static com.example.myapplication.studteachactivity.AddNewTask.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,14 +11,12 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,9 +48,12 @@ public class stdcalender extends AppCompatActivity {
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 // Format the selected date to match your database structure
-                stringDateSelected = String.format("%04d-%02d-%02d", i, i1 + 1, i2);
+                stringDateSelected = String.format("%04d-%02d-%02d", year, month + 1, day);
+
+                // Change the background color of the EditText to indicate selection
+                editText.setBackgroundColor(getResources().getColor(R.color.lavender)); // Set the color you want
             }
         });
 

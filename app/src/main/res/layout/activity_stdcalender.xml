@@ -8,14 +8,17 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:background="@color/lavender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/calendar_selection_bg"
         android:layout_marginStart="30dp"
         android:layout_marginTop="3dp"
         android:cardCornerRadius="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
 
     <EditText
         android:id="@+id/editText"
