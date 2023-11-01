@@ -80,6 +80,9 @@ public class sendRequest extends AppCompatActivity {
                                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                             // Add your success message here
                                             Toast.makeText(sendRequest.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
+
+                                            Intent intent = new Intent(sendRequest.this, addTeacher.class);
+                                            startActivity(intent);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
