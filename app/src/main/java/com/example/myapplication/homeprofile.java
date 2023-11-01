@@ -32,7 +32,7 @@ public class homeprofile extends AppCompatActivity {
 
     private TextView institution, address, semester, name, py;
 
-
+    Button back;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,21 @@ public class homeprofile extends AppCompatActivity {
         semester = findViewById(R.id.semester);
         name = findViewById(R.id.name);
         py = findViewById(R.id.payment);
+        back = findViewById(R.id.profileback);
 
         String userUid = getIntent().getStringExtra("user_id");
+        String student_id = getIntent().getStringExtra("student_id");
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(homeprofile.this, studentTeacher.class);
+                intent.putExtra("student_id",student_id);
+                intent.putExtra("teacher_id", userUid);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         if (userUid != null) {
             FirebaseFirestore db = FirebaseFirestore.getInstance();

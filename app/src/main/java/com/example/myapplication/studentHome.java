@@ -44,8 +44,23 @@ public class studentHome extends AppCompatActivity {
         address = findViewById(R.id.address);
         Class = findViewById(R.id.Class);
         name = findViewById(R.id.email);
+        Button back = findViewById(R.id.backbutton);
+
 
         String userUid = getIntent().getStringExtra("user_id");
+        String teach_id = getIntent().getStringExtra("teacher_id");
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(studentHome.this, teacherStudent.class);
+                intent.putExtra("student_id", userUid);
+                intent.putExtra("teacher_id",teach_id);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
         if (userUid != null) {
