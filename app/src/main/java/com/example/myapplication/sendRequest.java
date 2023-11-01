@@ -69,8 +69,10 @@ public class sendRequest extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             Map<String, Object> request = new HashMap<>();
                             request.put("studentID", studentUid);
+                            request.put("message","send you a request");
+                            request.put("type", 1);
 
-                            db.collection("Teacher").document(userUid).collection("requests")
+                            db.collection("Teacher").document(userUid).collection("notifications")
                                     .add(request)
                                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                         @Override
