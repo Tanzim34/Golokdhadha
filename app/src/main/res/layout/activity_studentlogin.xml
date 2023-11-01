@@ -8,6 +8,7 @@
     tools:ignore="ExtraText">
     android:background
 
+
     <ImageView
         android:id="@+id/sloginScreen"
         android:layout_width="0dp"
@@ -16,11 +17,10 @@
         android:src="@drawable/teacherlogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <EditText
         android:id="@+id/sUsername"
@@ -74,11 +74,12 @@
         android:id="@+id/slogin"
         android:layout_width="107dp"
         android:layout_height="48dp"
-        android:layout_marginTop="408dp"
-        android:text="Login"
         android:fontFamily="@font/tata"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="@+id/sloginScreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.524" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
