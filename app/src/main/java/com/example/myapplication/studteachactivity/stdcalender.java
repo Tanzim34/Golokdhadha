@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,8 +53,26 @@ public class stdcalender extends AppCompatActivity {
                 // Format the selected date to match your database structure
                 stringDateSelected = String.format("%04d-%02d-%02d", year, month + 1, day);
 
-                // Change the background color of the EditText to indicate selection
-                editText.setBackgroundColor(getResources().getColor(R.color.lavender)); // Set the color you want
+                // Reset the background color for all dates
+                for (int i = 0; i < calendarView.getChildCount(); i++) {
+                    View child = calendarView.getChildAt(i);
+                    child.setBackgroundResource(0);
+                }
+
+                // Get the day of the month of the selected date
+                int dayOfMonth = calendarView.getLayoutMode();
+
+                // Find the child view for the selected date and change its background color
+                for (int i = 0; i < calendarView.getChildCount(); i++) {
+                    View child = calendarView.getChildAt(i);
+                    if (child instanceof TextView) {
+                        TextView dayView = (TextView) child;
+                        if (dayView.getText().toString().equals(String.valueOf(dayOfMonth))) {
+                            // Change the background color of the selected date
+                            child.setBackgroundResource(R.drawable.selected_date_background); // Set the drawable you want
+                        }
+                    }
+                }
             }
         });
 
