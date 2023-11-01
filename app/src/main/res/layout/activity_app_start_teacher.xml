@@ -9,6 +9,23 @@
     android:textAlignment="center"
     tools:context=".appStartTeacher">
 
+    <Button
+        android:id="@+id/request"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="388dp"
+        android:text="Requests"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Profile"
+        app:layout_constraintVertical_bias="0.979" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="139dp"
@@ -73,12 +90,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="157dp"
         android:layout_marginEnd="152dp"
-        android:layout_marginBottom="388dp"
+        android:layout_marginBottom="340dp"
         android:text="Log Out"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Profile"
         app:layout_constraintVertical_bias="0.979" />

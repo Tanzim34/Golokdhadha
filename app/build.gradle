@@ -54,7 +54,7 @@ dependencies {
 }
 dependencies {
 
-    implementation 'com.prolificinteractive:material-calendarview:2.0.1'
+   // implementation 'com.prolificinteractive:material-calendarview:2.0.1'
 
 
 
