@@ -102,7 +102,7 @@ public class stdtask extends AppCompatActivity implements OnDialogCloseListner{
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error adding document", e);
                                 // Add your failure message here
-                                Toast.makeText(stdtask.this, "Failed to send notification", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(stdtask.this, "Failed to send notification", Toast.LENGTH_SHORT).show();
                             }
                         });
 

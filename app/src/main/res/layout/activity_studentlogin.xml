@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".studentlogin"
     tools:ignore="ExtraText">
-    android:background
+
 
 
     <ImageView
@@ -17,35 +17,33 @@
         android:src="@drawable/teacherlogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <EditText
         android:id="@+id/sUsername"
         android:layout_width="242dp"
         android:layout_height="56dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="472dp"
         android:gravity="center"
         android:hint="Enter Username or Email"
         android:textColor="#EDFFFFFF"
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sloginScreen"
+        app:layout_constraintVertical_bias="0.302" />
 
     <EditText
         android:id="@+id/sPassword"
         android:layout_width="242dp"
         android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="384dp"
         android:gravity="center"
         android:hint="Enter Password"
         android:inputType="textPassword"
@@ -53,22 +51,25 @@
         android:textColorHint="#82FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sloginScreen"
+        app:layout_constraintVertical_bias="0.429" />
+
     <TextView
         android:id="@+id/forgerPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Forgot Password?"
         android:textColor="#82FFFFFF"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/slogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/slogin" />
 
     <Button
         android:id="@+id/slogin"
@@ -78,8 +79,9 @@
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="@+id/sloginScreen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.538" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
