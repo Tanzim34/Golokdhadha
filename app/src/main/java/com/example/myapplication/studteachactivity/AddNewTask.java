@@ -171,6 +171,10 @@ public class AddNewTask  extends BottomSheetDialogFragment {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 if (task.isSuccessful()) {
+
+                                    DocumentReference documentReference = firestore.collection("Student").document(stdtask.student_id).collection("notifications").document();
+
+
                                     Toast.makeText(context, "Task Saved", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

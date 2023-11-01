@@ -1,19 +1,31 @@
 package com.example.myapplication.studteachactivity;
 
+import static com.example.myapplication.studteachactivity.AddNewTask.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.addTeacher;
 import com.example.myapplication.studentTeacher;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class stdpayment extends AppCompatActivity {
 
@@ -69,6 +81,34 @@ public class stdpayment extends AppCompatActivity {
 
                 paymentStatus.setText("PAID");
                 db = FirebaseFirestore.getInstance();
+
+
+                Map<String, Object> request = new HashMap<>();
+                request.put("teacherID", teach_id);
+                request.put("message"," added a new Task");
+                request.put("type", 4);
+
+                db.collection("Teacher").document(teach_id).collection("notifications")
+                        .add(request)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                // Add your success message here
+                                Toast.makeText(stdpayment.this, "Payment done successfully", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(stdpayment.this, addTeacher.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                                // Add your failure message here
+                                Toast.makeText(stdpayment.this, "Failed to send notification", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                 // set notification
 
                 Intent intent  = new Intent(stdpayment.this, studentTeacher.class);

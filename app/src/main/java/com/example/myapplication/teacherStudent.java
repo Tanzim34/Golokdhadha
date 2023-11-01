@@ -16,6 +16,7 @@ import com.example.myapplication.studteachactivity.stdchat;
 import com.example.myapplication.studteachactivity.stdnotify;
 import com.example.myapplication.studteachactivity.stdpayment;
 import com.example.myapplication.studteachactivity.stdtask;
+import com.example.myapplication.teachstudactivity.teachnotify;
 import com.example.myapplication.teachstudactivity.teachpayment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -136,7 +137,7 @@ public class teacherStudent extends AppCompatActivity {
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(teacherStudent.this, stdnotify.class);
+                Intent intent = new Intent(teacherStudent.this, teachnotify.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
                 intent.putExtra("where","inside");

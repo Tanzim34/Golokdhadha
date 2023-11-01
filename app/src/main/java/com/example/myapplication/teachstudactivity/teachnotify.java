@@ -13,6 +13,7 @@ import com.example.myapplication.databinding.ActivityAddTeacherBinding;
 import com.example.myapplication.databinding.ActivityStdnotifyBinding;
 import com.example.myapplication.databinding.ActivityTeacherListBinding;
 import com.example.myapplication.itemAdapter;
+import com.example.myapplication.studteachactivity.stdtask;
 import com.example.myapplication.teachstudactivity.acceptRequest;
 import com.example.myapplication.teachstudactivity.teachcalender;
 import com.example.myapplication.teachstudactivity.teachpayment;
@@ -79,6 +80,11 @@ public class teachnotify extends AppCompatActivity {
                 // for calender
                 if(type==3){
                     Intent intent = new Intent(teachnotify.this, teachcalender.class);
+                    intent.putExtra("student_id",studentID);
+                    intent.putExtra("teacher_id", teacherID);
+                }
+                if(type==4){
+                    Intent intent = new Intent(teachnotify.this, stdtask.class);
                     intent.putExtra("student_id",studentID);
                     intent.putExtra("teacher_id", teacherID);
                 }
