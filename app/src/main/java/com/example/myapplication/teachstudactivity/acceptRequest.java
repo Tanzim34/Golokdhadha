@@ -109,29 +109,7 @@ public class acceptRequest extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
 
 
-                                Map<String, Object> request = new HashMap<>();
-                                request.put("teacherID", teach_id);
-                                request.put("message","accept your request");
-                                request.put("type", 2);
 
-                                db.collection("Student").document(std_id).collection("notifications")
-                                        .add(request)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                                // Add your success message here
-                                                Toast.makeText(acceptRequest.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error adding document", e);
-                                                // Add your failure message here
-                                                Toast.makeText(acceptRequest.this, "Failed to send request", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
                             }
                                 // Document with ID successfully created
 
@@ -174,6 +152,30 @@ public class acceptRequest extends AppCompatActivity {
                                 }
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        });
+
+                Map<String, Object> request = new HashMap<>();
+                request.put("teacherID", teach_id);
+                request.put("message","accept your request");
+                request.put("type", 2);
+
+                db.collection("Student").document(std_id).collection("notifications")
+                        .add(request)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                // Add your success message here
+                                Toast.makeText(acceptRequest.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                                // Add your failure message here
+                                Toast.makeText(acceptRequest.this, "Failed to send request", Toast.LENGTH_SHORT).show();
                             }
                         });
 
