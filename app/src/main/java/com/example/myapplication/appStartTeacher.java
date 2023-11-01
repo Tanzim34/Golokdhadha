@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.teachstudactivity.teachnotify;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +24,7 @@ public class appStartTeacher extends AppCompatActivity {
 
     private FirebaseFirestore db;
     FirebaseAuth auth = FirebaseAuth.getInstance();
-    private Button logout, profile, studentlist;
+    private Button logout, profile, studentlist, request;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class appStartTeacher extends AppCompatActivity {
         logout = findViewById(R.id.logOut);
         profile = findViewById(R.id.myProfile);
         studentlist = findViewById(R.id.myStudents);
+        request = findViewById(R.id.request);
         String userUid = getIntent().getStringExtra("user_uid");
         if(userUid != null){
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,6 +67,18 @@ public class appStartTeacher extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(appStartTeacher.this, StudentList.class);
                 intent.putExtra("user_id", userUid);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(appStartTeacher.this, teachnotify.class);
+                intent.putExtra("teacher_id", userUid);
+                intent.putExtra("student_id", "NULL");
+                intent.putExtra("where", "outside");
                 startActivity(intent);
                 finish();
             }

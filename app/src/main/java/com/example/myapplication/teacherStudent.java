@@ -139,6 +139,7 @@ public class teacherStudent extends AppCompatActivity {
                 Intent intent = new Intent(teacherStudent.this, stdnotify.class);
                 intent.putExtra("student_id",std_id);
                 intent.putExtra("teacher_id", teach_id);
+                intent.putExtra("where","inside");
                 intent.putExtra("type", "Teacher");
                 startActivity(intent);
                 finish();

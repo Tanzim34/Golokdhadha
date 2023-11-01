@@ -27,6 +27,9 @@
             android:resource="@xml/selected_date_background" />
 
         <activity
+            android:name=".teachstudactivity.teachnotify"
+            android:exported="false" />
+        <activity
             android:name=".teachstudactivity.teachcalender"
             android:exported="false" />
         <activity
