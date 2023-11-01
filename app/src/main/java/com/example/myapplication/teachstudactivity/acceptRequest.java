@@ -1,5 +1,7 @@
 package com.example.myapplication.teachstudactivity;
 
+import static com.example.myapplication.studteachactivity.AddNewTask.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,6 +27,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -130,7 +133,29 @@ public class acceptRequest extends AppCompatActivity {
                                 // Handle errors
                             }
                         });
+
+                db.collection("Teacher").document(teach_id).collection("notifications")
+                        .whereEqualTo("studentID", std_id)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    db.collection("Teacher").document(teach_id).collection("notifications")
+                                            .document(document.getId())
+                                            .delete()
+                                            .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully deleted!"))
+                                            .addOnFailureListener(e -> Log.w(TAG, "Error deleting document", e));
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        });
+
+                Intent  intent = new Intent(acceptRequest.this, teachnotify.class);
+                startActivity(intent);
             }
+
+
         });
 
         rejectButton.setOnClickListener(new View.OnClickListener() {
@@ -143,19 +168,25 @@ public class acceptRequest extends AppCompatActivity {
 
 
 
-//                docRef.delete()
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                // Document with the specified ID has been successfully deleted.
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                // Handle errors, e.g., document not found, insufficient permissions, etc.
-//                            }
-//                        });
+                db.collection("Teacher").document(teach_id).collection("notifications")
+                        .whereEqualTo("studentID", std_id)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    db.collection("Teacher").document(teach_id).collection("notifications")
+                                            .document(document.getId())
+                                            .delete()
+                                            .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully deleted!"))
+                                            .addOnFailureListener(e -> Log.w(TAG, "Error deleting document", e));
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        });
+
+                Intent  intent = new Intent(acceptRequest.this, teachnotify.class);
+                startActivity(intent);
 
             }
         });
