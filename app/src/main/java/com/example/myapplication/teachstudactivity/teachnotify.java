@@ -2,6 +2,7 @@ package com.example.myapplication.teachstudactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class teachnotify extends AppCompatActivity {
     String studentID, teacherID, where, message;
     private Listdata listData;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class teachnotify extends AppCompatActivity {
             binding.listview.setOnItemClickListener((parent, view, position, id) -> {
                 // Handle the item click here
                 Listdata selectedData = dataList.get(position);
+                String std_id = selectedData.getId();
                 //System.out.println(dataArrayList.size());
                 int type = selectedData.getType();
                 String message = selectedData.getName();
@@ -62,7 +66,7 @@ public class teachnotify extends AppCompatActivity {
                 if(type==1) {
                     Intent intent = new Intent(teachnotify.this, acceptRequest.class);
                     intent.putExtra("teacher_id", teacherID);
-                    intent.putExtra("student_id", studentID);
+                    intent.putExtra("student_id", std_id);
                     startActivity(intent);
                 }
                 // for payment
