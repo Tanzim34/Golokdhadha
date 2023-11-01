@@ -31,7 +31,7 @@ public class stdnotify extends AppCompatActivity {
     public ArrayList<Listdata> dataArrayList = new ArrayList<>();
     public FirebaseFirestore db;
 
-    String studentID, teacherID;
+    String studentID, teacherID, message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class stdnotify extends AppCompatActivity {
         studentID = getIntent().getStringExtra("student_id");
         teacherID = getIntent().getStringExtra("teacher_id");
         db = FirebaseFirestore.getInstance();
-        CollectionReference teacherCollectionRef = db.collection("Teacher").document(teacherID).collection("notifications");
+        CollectionReference teacherCollectionRef = db.collection("Student").document(studentID).collection("notifications");
 
         fetchData(teacherCollectionRef, dataList -> {
             // Update the UI with the fetched data
@@ -89,15 +89,33 @@ public class stdnotify extends AppCompatActivity {
                         //ArrayList<Listdata> dataArrayList = new ArrayList<>(); // Create a local list
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String teacherID = document.getId();
-                            String id = document.getString("studentID");
-                            String message = document.getString("message");
+                            String ID = document.getId();
+                            String id = document.getString("teacherID");
+                            message = document.getString("message");
                             int type = document.getLong("type").intValue();
 
-                            // Fetch teacher name
-//                            DocumentReference userRef = db.collection("users").document(teacherID);
-//                            userRef.get().addOnSuccessListener(documentSnapshot -> {
-//                                String name = documentSnapshot.getString("Name");
+                            if (type == 1) {
+                                DocumentReference userRef = db.collection("users").document(id);
+                                userRef.get().addOnSuccessListener(documentSnapshot -> {
+                                    String name = documentSnapshot.getString("Name");
+                                    String msg = name + " " + message;
+                                    //message = name + " " + message;
+                                    // Fetch teacher name
+
+                                    Listdata listData = new Listdata(msg, id, type);
+                                    dataArrayList.add(listData);
+                                    // System.out.println(dataArrayList.size());
+                                    // Check if all data is loaded
+
+                                    // All data has been fetched, invoke the callback
+                                    callback.onDataFetched(dataArrayList);
+
+
+                                });
+//                                //System.out.println(dataArrayList.size());
+//
+//                            });
+                            } else {
                                 Listdata listData = new Listdata(message, id, type);
                                 dataArrayList.add(listData);
                                 // System.out.println(dataArrayList.size());
@@ -106,13 +124,13 @@ public class stdnotify extends AppCompatActivity {
                                     // All data has been fetched, invoke the callback
                                     callback.onDataFetched(dataArrayList);
                                 }
-//                                //System.out.println(dataArrayList.size());
-//
-//                            });
+                            }
                         }
-                    } else {
+                    }
+                    else{
                         System.err.println("Error getting documents: " + task.getException());
                     }
+
                 });
     }
 
