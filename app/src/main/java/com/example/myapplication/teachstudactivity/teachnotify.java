@@ -31,7 +31,9 @@ public class teachnotify extends AppCompatActivity {
     public ArrayList<Listdata> dataArrayList = new ArrayList<>();
     public FirebaseFirestore db;
 
-    String studentID, teacherID, where;
+    String studentID, teacherID, where, message;
+    private Listdata listData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class teachnotify extends AppCompatActivity {
                 //for requests
                 if(type==1) {
                     Intent intent = new Intent(teachnotify.this, acceptRequest.class);
-                    intent.putExtra("user_id", selectedData.getId());
+                    intent.putExtra("teacher_id", teacherID);
                     intent.putExtra("student_id", studentID);
                     startActivity(intent);
                 }
@@ -91,28 +93,46 @@ public class teachnotify extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String teacherID = document.getId();
                             String id = document.getString("studentID");
-                            String message = document.getString("message");
+                            message = document.getString("message");
                             int type = document.getLong("type").intValue();
 
-                            // Fetch teacher name
-//                            DocumentReference userRef = db.collection("users").document(teacherID);
-//                            userRef.get().addOnSuccessListener(documentSnapshot -> {
-//                                String name = documentSnapshot.getString("Name");
-                            Listdata listData = new Listdata(message, id, type);
-                            dataArrayList.add(listData);
-                            // System.out.println(dataArrayList.size());
-                            // Check if all data is loaded
-                            if (dataArrayList.size() == task.getResult().size()) {
-                                // All data has been fetched, invoke the callback
-                                callback.onDataFetched(dataArrayList);
-                            }
+                            if (type == 1) {
+                                DocumentReference userRef = db.collection("users").document(id);
+                                userRef.get().addOnSuccessListener(documentSnapshot -> {
+                                    String name = documentSnapshot.getString("Name");
+
+                                    message = name + " " + message;
+                                    // Fetch teacher name
+
+                                    Listdata listData = new Listdata(message, id, type);
+                                    dataArrayList.add(listData);
+                                    // System.out.println(dataArrayList.size());
+                                    // Check if all data is loaded
+
+                                        // All data has been fetched, invoke the callback
+                                        callback.onDataFetched(dataArrayList);
+
+
+                                });
 //                                //System.out.println(dataArrayList.size());
 //
 //                            });
+                            } else {
+                                Listdata listData = new Listdata(message, id, type);
+                                dataArrayList.add(listData);
+                                // System.out.println(dataArrayList.size());
+                                // Check if all data is loaded
+                                if (dataArrayList.size() == task.getResult().size()) {
+                                    // All data has been fetched, invoke the callback
+                                    callback.onDataFetched(dataArrayList);
+                                }
+                            }
                         }
-                    } else {
-                        System.err.println("Error getting documents: " + task.getException());
                     }
+                    else{
+                            System.err.println("Error getting documents: " + task.getException());
+                        }
+
                 });
     }
 
