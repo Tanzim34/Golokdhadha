@@ -110,7 +110,6 @@ public class acceptRequest extends AppCompatActivity {
 
 
                                 Map<String, Object> request = new HashMap<>();
-                                request.put("studentID", std_id);
                                 request.put("teacherID", teach_id);
                                 request.put("message","accept your request");
                                 request.put("type", 2);
