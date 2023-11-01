@@ -104,11 +104,11 @@ public class teachnotify extends AppCompatActivity {
                                 DocumentReference userRef = db.collection("users").document(id);
                                 userRef.get().addOnSuccessListener(documentSnapshot -> {
                                     String name = documentSnapshot.getString("Name");
-
-                                    message = name + " " + message;
+                                    String msg = name + " " + message;
+                                    //message = name + " " + message;
                                     // Fetch teacher name
 
-                                    Listdata listData = new Listdata(message, id, type);
+                                    Listdata listData = new Listdata(msg, id, type);
                                     dataArrayList.add(listData);
                                     // System.out.println(dataArrayList.size());
                                     // Check if all data is loaded

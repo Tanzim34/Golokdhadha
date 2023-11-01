@@ -130,6 +130,24 @@ public class TeacherSignUp extends AppCompatActivity {
 
                                 }
                             });
+
+                    DocumentReference documentReference = db.collection("Teacher").document(UID);
+                    Map<String, Object> emptyData = new HashMap<>();
+// You don't need to add any data to the document
+
+                    documentReference.set(emptyData)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    // Document with ID successfully created
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // Handle errors
+                                }
+                            });
                     Intent intent = new Intent(TeacherSignUp.this, teacherlogin.class);
                     intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
                             |Intent.FLAG_ACTIVITY_NEW_TASK);

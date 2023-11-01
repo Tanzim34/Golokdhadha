@@ -36,6 +36,8 @@ public class studentSignup extends AppCompatActivity {
     ImageView profileImageView;
     FirebaseFirestore db;
 
+    String ID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +113,7 @@ public class studentSignup extends AppCompatActivity {
                    user.sendEmailVerification();
                    Map<String, Object> userProfile = new HashMap<>();
                    String UID = user.getUid();
+                   ID = UID;
                    userProfile.put("Name", name);
                    userProfile.put("Institution", institution);
                    userProfile.put("Address", address);
@@ -131,6 +134,26 @@ public class studentSignup extends AppCompatActivity {
 
                                }
                            });
+
+                   DocumentReference documentReference = db.collection("Student").document(ID);
+
+                   Map<String, Object> emptyData = new HashMap<>();
+// You don't need to add any data to the document
+
+                   documentReference.set(emptyData)
+                           .addOnSuccessListener(new OnSuccessListener<Void>() {
+                               @Override
+                               public void onSuccess(Void aVoid) {
+                                   // Document with ID successfully created
+                               }
+                           })
+                           .addOnFailureListener(new OnFailureListener() {
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+                                   // Handle errors
+                               }
+                           });
+
                    Intent intent = new Intent(studentSignup.this, studentlogin.class);
                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK
                            |Intent.FLAG_ACTIVITY_NEW_TASK);
