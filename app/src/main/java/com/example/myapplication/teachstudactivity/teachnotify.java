@@ -95,7 +95,7 @@ public class teachnotify extends AppCompatActivity {
                         //ArrayList<Listdata> dataArrayList = new ArrayList<>(); // Create a local list
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String teacherID = document.getId();
+                            String ID = document.getId();
                             String id = document.getString("studentID");
                             message = document.getString("message");
                             int type = document.getLong("type").intValue();
