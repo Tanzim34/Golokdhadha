@@ -4,6 +4,8 @@ import static com.example.myapplication.studteachactivity.AddNewTask.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
+import com.example.myapplication.studentTeacher;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -25,7 +28,7 @@ public class stdcalender extends AppCompatActivity {
 
     private CalendarView calendarView;
     private EditText editText;
-    Button button;
+    Button button, back;
     private String stringDateSelected;
     FirebaseFirestore db;
     CollectionReference collectionReference;
@@ -46,6 +49,19 @@ public class stdcalender extends AppCompatActivity {
         collectionReference = db.collection("Student").document(std_id).collection("TeacherID").document(teach_id).collection("Calender");
 
         button = findViewById(R.id.button);
+        back = findViewById(R.id.calenderback);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(stdcalender.this, studentTeacher.class);
+                intent.putExtra("student_id",std_id);
+                intent.putExtra("teacher_id",teach_id);
+                startActivity(intent);
+                finish();
+
+            }
+        });
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class stdpayment extends AppCompatActivity {
 
-    Button donebutton;
+    Button donebutton, back;
     TextView paymentStatus;
     String std_id,teach_id;
     FirebaseFirestore db;
@@ -41,9 +41,21 @@ public class stdpayment extends AppCompatActivity {
         ImageButton bkashPaymentButton = findViewById(R.id.bkashPaymentButton);
         ImageButton nagadPaymentButton = findViewById(R.id.nagadPaymentButton);
         donebutton = findViewById(R.id.donebutton);
+        back = findViewById(R.id.paymentback);
         paymentStatus = findViewById(R.id.paymentStatus);
         std_id = getIntent().getStringExtra("student_id");
         teach_id = getIntent().getStringExtra("teacher_id");
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(stdpayment.this, studentTeacher.class);
+                intent.putExtra("student_id",std_id);
+                intent.putExtra("teacher_id",teach_id);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Handle bKash Payment Button Click
         bkashPaymentButton.setOnClickListener(new View.OnClickListener() {

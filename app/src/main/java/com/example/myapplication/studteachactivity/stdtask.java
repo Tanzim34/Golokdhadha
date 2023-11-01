@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.studteachactivity.ToDoAdapter;
@@ -49,6 +50,7 @@ public class stdtask extends AppCompatActivity implements OnDialogCloseListner{
 
     private RecyclerView recyclerView;
     private FloatingActionButton mFab;
+    public Button back;
     private FirebaseFirestore firestore;
     private ToDoAdapter adapter;
     private List<ToDoModel> mList;
@@ -71,7 +73,17 @@ public class stdtask extends AppCompatActivity implements OnDialogCloseListner{
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(stdtask.this));
-
+        back = findViewById(R.id.taskback);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(stdtask.this, studentTeacher.class);
+                intent.putExtra("student_id",student_id);
+                intent.putExtra("teacher_id",teacher_id);
+                startActivity(intent);
+                finish();
+            }
+        });
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

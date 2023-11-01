@@ -80,6 +80,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayout7"
                 android:layout_width="347dp"
                 android:layout_height="349dp"
                 android:layout_marginStart="24dp"
@@ -185,9 +186,23 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="37dp"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/backbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="27dp"
+                android:text="Back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
