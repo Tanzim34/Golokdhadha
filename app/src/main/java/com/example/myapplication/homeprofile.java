@@ -78,8 +78,8 @@ public class homeprofile extends AppCompatActivity {
                     name.setText(Name);
                     institution.setText(Institution);
                     address.setText(Address);
-                    semester.setText(CClass);
-                    py.setText(payment);
+                    semester.setText("2020-21");
+                    py.setText("1200");
 
 
 
